@@ -1,0 +1,10 @@
+.icon {
+  color: #fff;
+}
+.sideNav {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  flex: 0.2;
+  background-color: black;
+}

@@ -1,0 +1,8 @@
+.footer-class {
+  position: fixed;
+  bottom: 0;
+  width: 97%;
+  background-color: #282828;
+  color: #fff;
+  padding: 20px;
+}
