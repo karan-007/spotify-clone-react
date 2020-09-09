@@ -1,7 +1,7 @@
 import React from 'react'
-import './Body.css'
+import './home.css'
 
-function Body() {
+function Home() {
     return (
         <div className="body">
             <h1>this is body</h1>
@@ -9,4 +9,4 @@ function Body() {
     )
 }
 
-export default Body
+export default Home

@@ -1,0 +1,22 @@
+.navOption {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  height: 40px;
+  color: grey;
+  transition: 200ms color ease-in;
+  margin-left: 10%;
+  text-decoration: none !important;
+}
+.navOption:hover {
+  color: #fff;
+}
+
+.navOption h4 {
+  padding-left: 5%;
+}
+
+.navOption p {
+  font-size: 0.9em;
+  font-weight: bold;
+}

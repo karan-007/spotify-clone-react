@@ -1,9 +1,13 @@
 import React from 'react'
+import './NavOption.css'
 
-function NavOption(title, Icon) {
+function NavOption({ title, Icon }) {
+    // console.log(title)
     return (
-        <div>
 
+        <div className="navOption">
+            {Icon && <Icon className="icon" />}
+            {Icon ? <h4>{title}</h4> : <p>{title}</p>}
         </div>
     )
 }

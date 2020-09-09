@@ -2,7 +2,7 @@ let fetchApi = url => new Promise((resolve, reject) => {
     fetch(url, {
         method: 'GET',
         headers: {
-            "Authorization": "Bearer BQAtMfV6wB_CNKgUd-5WID0KBOuSp92s5wwb0sYSKhF_YSWdDrJnxlXKqiFKS0vKETaZsS-uCadE33kfFg4cIPYQRNakgXcBLkKudb3xyO1DIH8YmEU3L_Qjp7OGWYkxONgjtmv5tk_Hp2LLcP7joPyeITyQPPTIO7Gx_MYhJNbCsZ-rik2EHNp5FljvZU8sIJYnbkCLRylhA6gVJtxEAqBpE-R8KdROxxTkDLTF7X7ICHBVPtl_1ohl3EZN"
+            "Authorization": "Bearer BQBhxHsPu-SmT7hf3KJWUKq2pfZAS8qlLeQZt475CNkVcqAinQcrWUZi--oewo90G5eoACGRbBc1tmz4CQ-HQPNX3mmf4n5zg8PwGgGx2bnoIlScxp18UHjitHMp5Aczs_82WWcmTdT96YvIs_t5r0W0Zgz_M5QnsttOG1EXajj1Epls6Kp4QiN-UvsP2qAbygJb68_rKSzyqi4uBeaHmuWezGVflmL-7Mj-k9zjtgz0JxY0lY34I83Nyh4Hb1jhcS_WLNJUuRpmT_7IcNLhc5T3ULGCQ-Qf"
         }
     })
         .then(response => response.json())

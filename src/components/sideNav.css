@@ -1,4 +1,7 @@
 .icon {
+  color: grey;
+}
+.icon:hover {
   color: #fff;
 }
 .sideNav {
@@ -6,5 +9,25 @@
   flex-direction: column;
   height: 100vh;
   flex: 0.2;
+  /* width: 20%; */
   background-color: black;
+  text-decoration: none;
+}
+.sideNav-logo {
+  width: 70%;
+  margin: 5%;
+}
+.link-style {
+  text-decoration: none;
+}
+.sideNav-title {
+  color: grey;
+  margin-left: 10%;
+}
+hr {
+  width: 80%;
+  background-color: grey;
+}
+.sideNav-playList {
+  color: grey;
 }
