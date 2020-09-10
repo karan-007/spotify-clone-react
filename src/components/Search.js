@@ -34,13 +34,17 @@ function Search() {
                 </div>
             </div>
             <div className="search-container-div">
+                <h1>Albums</h1>
+                <div className="search-cards-div">
+                    {searchData.albums.items.slice(0, 5).map((album) => {
+                        return <Card key={album.id} name={album.name} artist={album.artists.slice(0, 3)} img={album.images[0] ? album.images[0].url : failImg} />
+                    })}
+                </div>
+            </div>
+            <div className="search-container-div">
                 <h1>Artists</h1>
                 <div className="search-cards-div">
                     {searchData.artists.items.slice(0, 5).map((artist) => {
-                        if (artist.images.length === 0) {
-                            console.log("yes")
-                        }
-                        console.log(artist.images[0])
                         return <Card key={artist.id} name={artist.name} data="Artist" img={artist.images[0] ? artist.images[0].url : failImg} />
                     })}
                 </div>
