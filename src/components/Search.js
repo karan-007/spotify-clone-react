@@ -49,9 +49,15 @@ function Search() {
                     })}
                 </div>
             </div>
+            <div className="search-container-div">
+                <h1>Playlists</h1>
+                <div className="search-cards-div">
+                    {searchData.playlists.items.slice(0, 5).map((playlist) => {
+                        return <Card key={playlist.id} name={playlist.name} data={playlist.owner.display_name} img={playlist.images[0] ? playlist.images[0].url : failImg} />
+                    })}
+                </div>
+            </div>
         </div>
-    } else {
-        display = "loading"
     }
 
     return (

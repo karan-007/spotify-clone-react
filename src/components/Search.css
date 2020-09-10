@@ -6,6 +6,7 @@
   height: 85vh;
   overflow-y: overlay;
   overflow-x: hidden;
+  color: #fff;
 }
 
 .search-body::-webkit-scrollbar {
@@ -40,8 +41,9 @@
 .search-container-div {
   width: 95%;
   margin: 0 auto;
+  margin-bottom: 50px;
 }
 .search-cards-div {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
