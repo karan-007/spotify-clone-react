@@ -56,9 +56,9 @@ function Home() {
     }
 
     if (done) {
-        console.log(recentList, "recent")
-        console.log(topArtist, "artist")
-        console.log(topTrack, "track")
+        console.log(recentList, "recent Tracks")
+        console.log(topArtist, "top artist")
+        console.log(topTrack, "top track ")
     }
 
     return (
