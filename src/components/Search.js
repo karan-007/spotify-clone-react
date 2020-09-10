@@ -22,10 +22,13 @@ function Search() {
 
     if (loaded) {
         display = <div>
-            <div>
-                {searchData.tracks.items.slice(0, 5).map((song) => {
-                    return <Card key={song.id} name={song.name} data={song.album.name} img={song.album.images[0].url} />
-                })}
+            <div className="search-container-div">
+                <h1>Songs</h1>
+                <div className="search-cards-div">
+                    {searchData.tracks.items.slice(0, 5).map((song) => {
+                        return <Card key={song.id} name={song.name} artist={song.artists} img={song.album.images[0].url} />
+                    })}
+                </div>
             </div>
         </div>
     } else {
