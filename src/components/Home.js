@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './home.css'
 import fetchApi from '../fetchApi';
+import Card from './Card'
 
 function Home() {
 
@@ -63,7 +64,7 @@ function Home() {
 
     return (
         <div className="body">
-            <h1>this is body</h1>
+            <Card />
         </div>
     )
 }
