@@ -1,10 +1,41 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Library.css'
+import fetchApi from '../fetchApi'
+import { Link } from 'react-router-dom'
+import Card from './Card';
 
 function Library() {
+    const [playlist, setplaylist] = useState();
+    const [toggle, setToggle] = useState(false);
+
+    useEffect(() => {
+        fetchApi("https://api.spotify.com/v1/users/xh6w6d5ztzy8f62qjz9yic4nj/playlists")
+            .then(res => {
+                setplaylist(res.items);
+                setToggle(true);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+    let playListData = "loading";
+
+    if (toggle) {
+        playListData =
+            <div className="playlist-cards">
+                <h1>Your Library</h1>
+                <div className="cardlist">
+                    {playlist.map((list) => {
+                        return <Card className="list-card" key={list.id} img={list.images[0].url} name={list.name} data={list.owner.display_name} />
+                    })}
+                </div>
+            </div>
+
+    }
     return (
         <div className="library">
-            <h1>this is library</h1>
+            {playListData}
         </div>
     )
 }

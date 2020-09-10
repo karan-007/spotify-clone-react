@@ -1,4 +1,10 @@
 .library {
   flex: 0.82;
   background-color: #121212;
+  color: #fff;
+}
+
+.cardlist {
+  display: flex;
+  justify-content: space-around;
 }
