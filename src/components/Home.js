@@ -72,6 +72,15 @@ function Home() {
                     })}
                 </div>
             </div>
+            <div className="cardDiv">
+                <h1>Your Top Artist</h1>
+                <div className="cardList">
+                    {topArtist.slice(0, 5).map((artist) => {
+                        // console.log(artist)
+                        return <Card key={artist.id} name={artist.name} data="Artist" img={artist.images[0].url} />
+                    })}
+                </div>
+            </div>
 
         </div>
     }
