@@ -1,4 +1,22 @@
 .body {
   flex: 0.82;
   background-color: #121212;
+  height: 85vh;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+
+.body::-webkit-scrollbar {
+  display: none;
+}
+
+.cardDiv {
+  width: 95%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.cardList {
+  display: flex;
+  justify-content: space-between;
 }
