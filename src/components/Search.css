@@ -3,6 +3,13 @@
   background-color: #121212;
   display: flex;
   flex-direction: column;
+  height: 85vh;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+
+.search-body::-webkit-scrollbar {
+  display: none;
 }
 
 .search-topnav {
