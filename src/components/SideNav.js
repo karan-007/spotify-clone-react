@@ -51,10 +51,10 @@ function SideNav() {
             <Link className="link-style" to="/" >
                 <NavOption Icon={HomeIcon} title="Home" />
             </Link>
-            <Link className="link-style" to="search">
+            <Link className="link-style" to="/search">
                 <NavOption Icon={SearchIcon} title="Search" />
             </Link>
-            <Link className="link-style" to="library">
+            <Link className="link-style" to="/library">
                 <NavOption Icon={LibraryMusicIcon} title="Your Library" />
             </Link>
             <br />

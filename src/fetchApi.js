@@ -2,7 +2,7 @@ let fetchApi = url => new Promise((resolve, reject) => {
     fetch(url, {
         method: 'GET',
         headers: {
-            "Authorization": "Bearer BQC3Edqy8EpDOmOZ6Gd5bpMrMSG-NGlPojEnQhE5uUoxL5B2im3V-6sFp5kCLxLqYnIG_zyrOkJd5VV5f6Afo0_x7vkYvKs82KOb_-NJXve9XAcozqS2xYI06le0P1gMW_lxD8iMJoWY4Qv9F4LlciUgb-Hlhl9znf27M7PpXGDmJI5_9q7oF3-EHZqaxNUbRtziPKyZmz38vnZ6Ewgamg7QfGHpYMlRF0x2Kj-YU8B4Ddf53M4kR5tw5gQ9oQ9Q5A0PY_qxocHI9hZ2_vC80L9UyxDcLSMe"
+            "Authorization": "Bearer BQC4d5_ST18J6UshYYrXb5z2FEGQFag0nVKopiehkJ1nDrJNwBxtzDcTgDOhZo2KDAi37s4RxGwOp5qunIgNwAxUwfZGRypmoFmk0BCXNNgDFx_CI_mhnOE7tnVMuX5s2pC3AfsEIW0RblTyASquoNg1Pvh9eLKyyUFz61Klbwe5-Bp_nQvFMer-hUixFUu1lpUoBHmfk45dio3l_-7AdOE3R0Y93NEumuzdeEHD7wF5b7KW3x-6e119OiUMO6UdsRm8y6PHDt5fkHMVjPNxsrd7XvOXgOhx"
         }
     })
         .then(response => response.json())
