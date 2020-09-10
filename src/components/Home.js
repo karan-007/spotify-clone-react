@@ -81,7 +81,15 @@ function Home() {
                     })}
                 </div>
             </div>
-
+            <div className="cardDiv">
+                <h1>Recently Played</h1>
+                <div className="cardList">
+                    {recentList.slice(0, 5).map((song) => {
+                        // console.log(artist)
+                        return <Card key={song.track.id} name={song.track.name} artist={song.track.artists} img={song.track.album.images[0].url} />
+                    })}
+                </div>
+            </div>
         </div>
     }
 
