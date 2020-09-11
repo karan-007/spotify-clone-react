@@ -29,11 +29,28 @@ function PlayList({ match }) {
         }
     }, [id])
 
+
+
+    let type = match.path.split("/")[1]
+    // console.log(type)
+
     async function fetchData(id) {
-        let data = await fetchApi(`https://api.spotify.com/v1/playlists/${id}`)
-        setplaylist(data.tracks.items)
-        setList(data)
-        setToggle(true);
+        if (type === "playlist") {
+            let data = await fetchApi(`https://api.spotify.com/v1/playlists/${id}`)
+            setplaylist(data.tracks.items)
+            setList(data)
+            setToggle(true);
+        }
+        if (type === "track") {
+            let data = await fetchApi(`https://api.spotify.com/v1/tracks/${id}`)
+            console.log(data)
+        }
+        if (type === "artist") {
+            let data = await fetchApi(`https://api.spotify.com/v1/artists/${id}`)
+            console.log(data)
+            let tracks = await fetchApi(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=IN`)
+            console.log(tracks)
+        }
     }
 
 
@@ -60,27 +77,27 @@ function PlayList({ match }) {
 
 
     if (toggle) {
-        console.log(list)
-        playListData =
-            <div className="body-info">
-                <img src={list.images[0].url} alt="" />
-                <div className="body-infoText">
-                    <strong>{list.type}</strong>
-                    <h2>{list.name}</h2>
-                    <p>{list.description}</p>
+        if (type === "playlist") {
+            playListData =
+                <div className="body-info">
+                    <img src={list.images[0].url} alt="" />
+                    <div className="body-infoText">
+                        <strong>{list.type}</strong>
+                        <h2>{list.name}</h2>
+                        <p>{list.description}</p>
+                    </div>
                 </div>
-            </div>
-        songs = playlist.map((song) => {
-            return <Song key={song.track.id}
-                img={song.track.album.images[0].url}
-                name={song.track.name}
-                artists={song.track.artists}
-                album={song.track.album.name}
-                duration={song.track.duration_ms}
-                audio={song.track.preview_url}
-                play={playSong} />
-        })
-
+            songs = playlist.map((song) => {
+                return <Song key={song.track.id}
+                    img={song.track.album.images[0].url}
+                    name={song.track.name}
+                    artists={song.track.artists}
+                    album={song.track.album.name}
+                    duration={song.track.duration_ms}
+                    audio={song.track.preview_url}
+                    play={playSong} />
+            })
+        }
     }
     return (
         <div className="playlist">

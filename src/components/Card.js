@@ -2,10 +2,10 @@ import React from 'react'
 import './Card.css'
 import PlayCircleFilledRoundedIcon from '@material-ui/icons/PlayCircleFilledRounded';
 
-function Card({ name, data, img, artist }) {
+function Card({ name, data, img, artist, onClick }) {
     // {Icon ? <h4>{title}</h4> : <p>{title}</p>}
     return (
-        <div className="card">
+        <div className="card" onClick={onClick}>
             <div className="card-data">
                 <div className="card-icon">
                     <PlayCircleFilledRoundedIcon fontSize="large" />

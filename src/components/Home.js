@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import './home.css'
 import fetchApi from '../fetchApi';
 import Card from './Card'
+import { withRouter } from 'react-router-dom'
 
-function Home() {
+function Home({ history }) {
 
     const [recentList, setRecent] = useState([]);
     const [topTrack, setTrack] = useState([]);
@@ -58,6 +59,11 @@ function Home() {
         })
     }
 
+    function goto(link) {
+        // console.log("ds")
+        history.push(link)
+    }
+
     if (done) {
         console.log(recentList, "recent Tracks")
         console.log(topArtist, "top artist")
@@ -68,7 +74,7 @@ function Home() {
                 <div className="cardList">
                     {topTrack.slice(0, 5).map((song) => {
                         // console.log(song)
-                        return <Card key={song.id} name={song.name} artist={song.artists} img={song.album.images[0].url} />
+                        return <Card onClick={() => goto(`/track/${song.id}`)} key={song.id} name={song.name} artist={song.artists} img={song.album.images[0].url} />
                     })}
                 </div>
             </div>
@@ -77,7 +83,7 @@ function Home() {
                 <div className="cardList">
                     {topArtist.slice(0, 5).map((artist) => {
                         // console.log(artist)
-                        return <Card key={artist.id} name={artist.name} data="Artist" img={artist.images[0].url} />
+                        return <Card onClick={() => goto(`/Artist/${artist.id}`)} key={artist.id} name={artist.name} data="Artist" img={artist.images[0].url} />
                     })}
                 </div>
             </div>
@@ -86,7 +92,7 @@ function Home() {
                 <div className="cardList">
                     {recentList.slice(0, 5).map((song) => {
                         // console.log(artist)
-                        return <Card key={song.track.id} name={song.track.name} artist={song.track.artists} img={song.track.album.images[0].url} />
+                        return <Card onClick={() => goto(`/track/${song.id}`)} key={song.track.id} name={song.track.name} artist={song.track.artists} img={song.track.album.images[0].url} />
                     })}
                 </div>
             </div>
@@ -100,4 +106,4 @@ function Home() {
     )
 }
 
-export default Home
+export default withRouter(Home)

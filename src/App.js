@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PlayList from './components/PlayList';
 import Login from './components/Login'
 import { getTokenFromResponse } from "./spotify";
+import Example from './components/example'
 
 
 function App() {
@@ -74,6 +75,8 @@ function App() {
             <Route path="/search" component={Search} />
             <Route path="/library" exact component={Library} />
             <Route path="/playlist/:id" component={PlayList} />
+            <Route path="/track/:id" component={PlayList} />
+            <Route path="/artist/:id" component={PlayList} />
           </Switch>
         </div>
         <Footer />
