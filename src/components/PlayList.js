@@ -43,13 +43,15 @@ function PlayList({ match }) {
         }
         if (type === "track") {
             let data = await fetchApi(`https://api.spotify.com/v1/tracks/${id}`)
-            console.log(data)
+            setplaylist(data)
+            setToggle(true);
         }
         if (type === "artist") {
             let data = await fetchApi(`https://api.spotify.com/v1/artists/${id}`)
-            console.log(data)
+            setList(data)
             let tracks = await fetchApi(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=IN`)
-            console.log(tracks)
+            setplaylist(tracks.tracks)
+            setToggle(true);
         }
     }
 
@@ -76,7 +78,9 @@ function PlayList({ match }) {
     }
 
 
+
     if (toggle) {
+        console.log(playlist)
         if (type === "playlist") {
             playListData =
                 <div className="body-info">
@@ -97,6 +101,45 @@ function PlayList({ match }) {
                     audio={song.track.preview_url}
                     play={playSong} />
             })
+        } else if (type === "artist") {
+            playListData =
+                <div className="body-info">
+                    <img src={list.images[0].url} alt="" />
+                    <div className="body-infoText">
+                        <strong>{list.type}</strong>
+                        <h2>{list.name}</h2>
+                    </div>
+                </div>
+            songs = playlist.map((song) => {
+                return <Song key={song.id}
+                    img={song.album.images[0].url}
+                    name={song.name}
+                    artists={song.artists}
+                    album={song.album.name}
+                    duration={song.duration_ms}
+                    audio={song.preview_url}
+                    play={playSong} />
+            })
+        } else {
+            playListData =
+                <div className="body-info">
+                    <img src={playlist.album.images[0].url} alt="" />
+                    <div className="body-infoText">
+                        <strong>{playlist.type}</strong>
+                        <h2>{playlist.name}</h2>
+                        <p>{playlist.album.name}</p>
+                    </div>
+                </div>
+            songs =
+                <Song key={playlist.id}
+                    img={playlist.album.images[0].url}
+                    name={playlist.name}
+                    artists={playlist.artists}
+                    album={playlist.album.name}
+                    duration={playlist.duration_ms}
+                    audio={playlist.preview_url}
+                    play={playSong} />
+
         }
     }
     return (

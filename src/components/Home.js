@@ -65,9 +65,9 @@ function Home({ history }) {
     }
 
     if (done) {
-        console.log(recentList, "recent Tracks")
-        console.log(topArtist, "top artist")
-        console.log(topTrack, "top track ")
+        // console.log(recentList, "recent Tracks")
+        // console.log(topArtist, "top artist")
+        // console.log(topTrack, "top track ")
         showData = <div>
             <div className="cardDiv">
                 <h1>Your Top Tracks</h1>
@@ -91,8 +91,8 @@ function Home({ history }) {
                 <h1>Recently Played</h1>
                 <div className="cardList">
                     {recentList.slice(0, 5).map((song) => {
-                        // console.log(artist)
-                        return <Card onClick={() => goto(`/track/${song.id}`)} key={song.track.id} name={song.track.name} artist={song.track.artists} img={song.track.album.images[0].url} />
+                        // console.log(song)
+                        return <Card onClick={() => goto(`/track/${song.track.id}`)} key={song.track.id} name={song.track.name} artist={song.track.artists} img={song.track.album.images[0].url} />
                     })}
                 </div>
             </div>

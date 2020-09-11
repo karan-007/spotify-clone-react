@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PlayList from './components/PlayList';
 import Login from './components/Login'
 import { getTokenFromResponse } from "./spotify";
-import Example from './components/example'
+
 
 
 function App() {
