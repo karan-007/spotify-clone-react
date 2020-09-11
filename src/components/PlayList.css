@@ -24,6 +24,9 @@
 .body-infoText {
   flex: 1;
 }
+.body-infoText strong {
+  font-size: 1.5em;
+}
 
 .body-infoText > h2 {
   font-weight: bolder;

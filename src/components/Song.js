@@ -2,21 +2,21 @@ import React from 'react'
 import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded';
 import './Song.css'
 
-function Song({ track }) {
+function Song({ img, name, artists, album, duration, audio, play }) {
+
     return (
         <div className="song">
-            <PlayArrowRoundedIcon className="song-icon" fontSize="large" />
-            <img className="song-img" src={track.album.images[0].url} alt="" />
+            <PlayArrowRoundedIcon onClick={() => play(audio)} className="song-icon" fontSize="large" />
+            <img className="song-img" src={img} alt="" />
             <div className="song-info">
-                <h4>{track.name}</h4>
+                <h4>{name}</h4>
                 <span>
-                    {track.artists.map((artist) => artist.name).join(", ")}
+                    {artists.map((artist) => artist.name).join(", ")}
                 </span>
             </div>
-            <p className="song-album">{track.album.name}</p>
-            <p className="song-duration">{track.duration_ms} s</p>
+            <p className="song-album">{album}</p>
+            <p className="song-duration">{duration} s</p>
         </div>
     )
 }
-
 export default Song

@@ -1,8 +1,15 @@
+import { getTokenFromResponse } from "./spotify";
+
+
+const hash = getTokenFromResponse();
+window.location.hash = "";
+let _token = hash.access_token;
+
 let fetchApi = url => new Promise((resolve, reject) => {
     fetch(url, {
         method: 'GET',
         headers: {
-            "Authorization": "Bearer BQCdhMKiGOXZSW1epQQ7NB6IClmQj52EDR5cd5cXpUckdddMv3hJpzJ2GSld1BntG7Qpk3Q-3FGWb7wO75M3R2r-owRi3-ynBQPAXZgUdboRoS7uGNAytbywOT2L_5QPU2bIhxjHv1-Jq8DibEhgp_pOIF8CHaktUaTgdkTd8u0bPFt_cI8aIr8SE12dPZZbZ7oRL7_7l2zo2WUL5nKdADECOIo4LAKxZHCgFIUcnSI1UaFps6QJ5Mwrq5691A6Ddr08yrNymgDOUPlKZn8xsRKiBxQ1pcV7"
+            "Authorization": `Bearer BQAAgzShnzVktrQGWUHoNzjSdAxXuqB0NMGsWOZQFvCecqDtle_2tl6gPoaeBP9Wjt6dAuofgb5r3xKxgzs3K5fOMVHfsWCKJgiRO6bhnHLLSJUqNh85yej1K3_zvch3ajvwWEOeJwAjdBMmcrC9OHQiV772Iqi_dpd7evgbDKCWzc3UrA0bQLRBEIuWA6hd53_VxHpdpXSpOdVo0nO0Hs9t9cdBREZewOmmYA1wBZXCZLXVf3Pc61IGAgpep9Knfo4cDaoG98CJScjYCo2iMdSIDoclujMS`
         }
     })
         .then(response => response.json())

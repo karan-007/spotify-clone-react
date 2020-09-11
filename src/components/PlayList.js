@@ -11,6 +11,10 @@ function PlayList({ match }) {
     const [list, setList] = useState({});
     const [toggle, setToggle] = useState(false);
     const [error, setError] = useState("");
+    const [song, setsong] = useState();
+    const [playing, setplaying] = useState();
+
+
     let playListData = "loading";
     let songs = "loading";
     const mounted = useRef();
@@ -38,18 +42,43 @@ function PlayList({ match }) {
     if (error) {
         errorData = "error";
     }
+
+    const playSong = (a) => {
+        if (playing) {
+            song.pause();
+            let newSong = new Audio(a);
+            newSong.play();
+            setsong(newSong);
+            setplaying(true)
+        } else {
+            let newSong = new Audio(a);
+            newSong.play();
+            setsong(newSong);
+            setplaying(true)
+        }
+    }
+
+
     if (toggle) {
+        console.log(list)
         playListData =
             <div className="body-info">
                 <img src={list.images[0].url} alt="" />
                 <div className="body-infoText">
-                    <strong>PLAYLIST</strong>
+                    <strong>{list.type}</strong>
                     <h2>{list.name}</h2>
                     <p>{list.description}</p>
                 </div>
             </div>
         songs = playlist.map((song) => {
-            return <Song key={song.track.id} track={song.track} />
+            return <Song key={song.track.id}
+                img={song.track.album.images[0].url}
+                name={song.track.name}
+                artists={song.track.artists}
+                album={song.track.album.name}
+                duration={song.track.duration_ms}
+                audio={song.track.preview_url}
+                play={playSong} />
         })
 
     }
