@@ -53,6 +53,12 @@ function PlayList({ match }) {
             setplaylist(tracks.tracks)
             setToggle(true);
         }
+        if (type === "album") {
+            let data = await fetchApi(`https://api.spotify.com/v1/albums/${id}`)
+            setplaylist(data.tracks.items)
+            setList(data)
+            setToggle(true);
+        }
     }
 
 
@@ -76,8 +82,6 @@ function PlayList({ match }) {
             setplaying(true)
         }
     }
-
-
 
     if (toggle) {
         console.log(playlist)
@@ -140,7 +144,27 @@ function PlayList({ match }) {
                     audio={playlist.preview_url}
                     play={playSong} />
         } else {
-
+            console.log(list)
+            console.log(playlist)
+            playListData =
+                <div className="body-info">
+                    <img src={list.images[0].url} alt="" />
+                    <div className="body-infoText">
+                        <strong>{list.type}</strong>
+                        <h2>{list.name}</h2>
+                        <p>{list.label}</p>
+                    </div>
+                </div>
+            songs = playlist.map((song) => {
+                return <Song key={song.id}
+                    img={list.images[0].url}
+                    name={song.name}
+                    artists={song.artists}
+                    album={list.name}
+                    duration={song.duration_ms}
+                    audio={song.preview_url}
+                    play={playSong} />
+            })
         }
     }
     return (

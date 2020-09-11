@@ -77,6 +77,7 @@ function App() {
             <Route path="/playlist/:id" component={PlayList} />
             <Route path="/track/:id" component={PlayList} />
             <Route path="/artist/:id" component={PlayList} />
+            <Route path="/album/:id" component={PlayList} />
           </Switch>
         </div>
         <Footer />
