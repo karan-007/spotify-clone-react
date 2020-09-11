@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import './Search.css'
 import fetchApi from '../fetchApi';
 import Card from './Card'
+import { withRouter } from 'react-router-dom'
 
-function Search() {
+function Search({ history }) {
 
     const [searchData, setData] = useState();
     const [loaded, setLoad] = useState(false);
@@ -23,13 +24,17 @@ function Search() {
 
     let display = "";
 
+    function goto(link) {
+        history.push(link)
+    }
+
     if (loaded) {
         display = <div>
             <div className="search-container-div">
                 <h1>Top Songs</h1>
                 <div className="search-cards-div">
                     {searchData.tracks.items.slice(0, 5).map((song) => {
-                        return <Card key={song.id} name={song.name} artist={song.artists} img={song.album.images[0] ? song.album.images[0].url : failImg} />
+                        return <Card onClick={() => goto(`/track/${song.id}`)} key={song.id} name={song.name} artist={song.artists} img={song.album.images[0] ? song.album.images[0].url : failImg} />
                     })}
                 </div>
             </div>
@@ -37,7 +42,7 @@ function Search() {
                 <h1>Albums</h1>
                 <div className="search-cards-div">
                     {searchData.albums.items.slice(0, 5).map((album) => {
-                        return <Card key={album.id} name={album.name} artist={album.artists.slice(0, 3)} img={album.images[0] ? album.images[0].url : failImg} />
+                        return <Card onClick={() => goto(`/album/${album.id}`)} key={album.id} name={album.name} artist={album.artists.slice(0, 3)} img={album.images[0] ? album.images[0].url : failImg} />
                     })}
                 </div>
             </div>
@@ -45,7 +50,7 @@ function Search() {
                 <h1>Artists</h1>
                 <div className="search-cards-div">
                     {searchData.artists.items.slice(0, 5).map((artist) => {
-                        return <Card key={artist.id} name={artist.name} data="Artist" img={artist.images[0] ? artist.images[0].url : failImg} />
+                        return <Card onClick={() => goto(`/artist/${artist.id}`)} key={artist.id} name={artist.name} data="Artist" img={artist.images[0] ? artist.images[0].url : failImg} />
                     })}
                 </div>
             </div>
@@ -53,7 +58,7 @@ function Search() {
                 <h1>Playlists</h1>
                 <div className="search-cards-div">
                     {searchData.playlists.items.slice(0, 5).map((playlist) => {
-                        return <Card key={playlist.id} name={playlist.name} data={playlist.owner.display_name} img={playlist.images[0] ? playlist.images[0].url : failImg} />
+                        return <Card onClick={() => goto(`/playlist/${playlist.id}`)} key={playlist.id} name={playlist.name} data={playlist.owner.display_name} img={playlist.images[0] ? playlist.images[0].url : failImg} />
                     })}
                 </div>
             </div>
@@ -72,4 +77,4 @@ function Search() {
     )
 }
 
-export default Search
+export default withRouter(Search)

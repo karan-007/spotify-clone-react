@@ -9,7 +9,7 @@ let fetchApi = url => new Promise((resolve, reject) => {
     fetch(url, {
         method: 'GET',
         headers: {
-            "Authorization": `Bearer BQCdr5w1KMw-911e2imyzPYd3IKbazwj3mIgxk9Imx4zk-x-1Lk0NO6nzPW1dKNo0p5jISV0GnS5TbYtMrHzcUtTO_7qDf1P-SuYo6-SXzmFbf-BpXzFfX_jzu0H5xnpSOauO29rp01RnHMv9HaKLXiD-BLyXNbc35DtjHRrq3OGpgEG-RKhqi4HcyL-mc_J9F7aMs2ndSWbGzCeUw9mNw0CAPgmpzQ3rOjOz5apaiScdLCrk2vEK6eFUS8UFOgYvICowycdlsplSORqJ5NgKB5UypIIUxFK`
+            "Authorization": `Bearer BQCMd8BcTJuPW_2IRfC4LLagTIA_Teo_6LE9vELu9a7dBu43X03P4rGUHkD0mZtw-kZ9m3uqTcG8XneZ077Cl22UYKy9IXA691A5DPb5jlXHYAfigbZH3pn093tYcGoJsld07TLzEVfGt4vwcXNBgBsLC68DLd-SIJy91PiYAcmtMrOYIOLiwy6iPFyFYF-19LrmJ711harZG1e5EQRlTMYuYrcLKQDYsXDrOosHpie8g95wC3OSqmIi4ZtXR1_V8K4bcByidP9x4UxoylooLflkmldO5yGG`
         }
     })
         .then(response => response.json())

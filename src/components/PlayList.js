@@ -120,7 +120,7 @@ function PlayList({ match }) {
                     audio={song.preview_url}
                     play={playSong} />
             })
-        } else {
+        } else if (type === "track") {
             playListData =
                 <div className="body-info">
                     <img src={playlist.album.images[0].url} alt="" />
@@ -139,6 +139,7 @@ function PlayList({ match }) {
                     duration={playlist.duration_ms}
                     audio={playlist.preview_url}
                     play={playSong} />
+        } else {
 
         }
     }
