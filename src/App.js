@@ -8,7 +8,7 @@ import Search from './components/Search'
 import Library from './components/Library'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PlayList from './components/PlayList';
-import Login from './Login'
+import Login from './components/Login'
 import { getTokenFromResponse } from "./spotify";
 import AlbumAndTrack from './components/AlbumAndTrack';
 
@@ -16,12 +16,17 @@ import AlbumAndTrack from './components/AlbumAndTrack';
 
 function App() {
 
-  // const [token, setToken] = useState()
+  const [token, setToken] = useState(false)
 
-  // useEffect(() => {
-  //   const token = getTokenFromResponse();
-  //   setToken(token)
-  // }, []);
+  useEffect(() => {
+    const hash = getTokenFromResponse();
+    let _token = hash.access_token;
+    window.location.hash = "";
+
+    if (_token) {
+      setToken(true)
+    }
+  }, []);
 
   // console.log(token)
 
@@ -57,15 +62,13 @@ function App() {
   //   </div>
   //   <Footer />
   // </div>
-
-  // let data = !token ? <div>
-  //   <Login />
-  // </div> : <div className="App">
-  //     <h1>logged in</h1>
-  //   </div>
-
-  return (
-    <Router>
+  let data = "loading"
+  if (!token) {
+    data = <div className="App">
+      <Login />
+    </div>
+  } else {
+    data = <Router>
       <div className="App">
         <div className="upper-body">
           <SideNav />
@@ -83,7 +86,13 @@ function App() {
       </div>
 
     </Router>
-    // <Login />
+  }
+
+  return (
+    <div>
+      {data}
+    </div>
+
   );
 }
 
