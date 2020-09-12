@@ -8,14 +8,22 @@ import Search from './components/Search'
 import Library from './components/Library'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PlayList from './components/PlayList';
-import Login from './components/Login'
+import Login from './Login'
 import { getTokenFromResponse } from "./spotify";
+import AlbumAndTrack from './components/AlbumAndTrack';
 
 
 
 function App() {
 
-  const [token, setToken] = useState()
+  // const [token, setToken] = useState()
+
+  // useEffect(() => {
+  //   const token = getTokenFromResponse();
+  //   setToken(token)
+  // }, []);
+
+  // console.log(token)
 
   // useEffect(() => {
   //   const hash = getTokenFromResponse();
@@ -33,37 +41,28 @@ function App() {
   //     .catch(err => console.log(err))
   // })
 
-  let login = <div>
-    <Login />
-  </div>
+  // let login = <div>
+  //   <Login />
+  // </div>
 
-  let display = <div className="App">
-    <div className="upper-body">
-      <SideNav />
-      <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path="/search" component={Search} />
-        <Route path="/library" exact component={Library} />
-        <Route path="/playlist/:id" component={PlayList} />
-      </Switch>
-    </div>
-    <Footer />
-  </div>
+  // let display = <div className="App">
+  //   <div className="upper-body">
+  //     <SideNav />
+  //     <Switch>
+  //       <Route path='/' exact component={Home} />
+  //       <Route path="/search" component={Search} />
+  //       <Route path="/library" exact component={Library} />
+  //       <Route path="/playlist/:id" component={PlayList} />
+  //     </Switch>
+  //   </div>
+  //   <Footer />
+  // </div>
 
-  let data = !token ? <div>
-    <Login />
-  </div> : <div className="App">
-      <div className="upper-body">
-        <SideNav />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path="/search" component={Search} />
-          <Route path="/library" exact component={Library} />
-          <Route path="/playlist/:id" component={PlayList} />
-        </Switch>
-      </div>
-      <Footer />
-    </div>
+  // let data = !token ? <div>
+  //   <Login />
+  // </div> : <div className="App">
+  //     <h1>logged in</h1>
+  //   </div>
 
   return (
     <Router>
@@ -75,14 +74,16 @@ function App() {
             <Route path="/search" component={Search} />
             <Route path="/library" exact component={Library} />
             <Route path="/playlist/:id" component={PlayList} />
-            <Route path="/track/:id" component={PlayList} />
-            <Route path="/artist/:id" component={PlayList} />
-            <Route path="/album/:id" component={PlayList} />
+            <Route path="/track/:id" component={AlbumAndTrack} />
+            <Route path="/artist/:id" component={AlbumAndTrack} />
+            <Route path="/album/:id" component={AlbumAndTrack} />
           </Switch>
         </div>
         <Footer />
       </div>
+
     </Router>
+    // <Login />
   );
 }
 

@@ -1,20 +1,13 @@
 
-export const authEndpoint = "https://accounts.spotify.com/authorize";
+export const authEndpoint = "http://accounts.spotify.com/authorize";
 const clientId = "05d7ad7e03d44fb08de32d8213ee2926";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "http://localhost:3000";
 const scopes = [
     "user-read-currently-playing",
     "user-read-recently-played",
     "user-read-playback-state",
     "user-top-read",
     "user-modify-playback-state",
-    "user-read-playback-position",
-    "user-read-email",
-    "user-follow-read",
-    "user-library-read",
-    "user-read-private",
-    "playlist-read-collaborative",
-    "playlist-read-private",
 ];
 
 export const getTokenFromResponse = () => {
