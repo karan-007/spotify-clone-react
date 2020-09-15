@@ -11,6 +11,9 @@
 .navOption:hover {
   color: #fff;
 }
+.navOption:focus {
+  color: #fff;
+}
 
 .navOption h4 {
   padding-left: 5%;

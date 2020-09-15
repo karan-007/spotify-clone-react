@@ -1,7 +1,15 @@
 
 export const authEndpoint = "http://accounts.spotify.com/authorize";
 const clientId = "05d7ad7e03d44fb08de32d8213ee2926";
-const redirectUri = "https://karan-spotify.netlify.app/";
+
+const redirectUri = "";
+// console.log(window.location.href.split('/')[2])
+if (window.location.href.split('/')[2] === "localhost:3000") {
+    redirectUri = "http://localhost:3000/";
+} else {
+    redirectUri = "https://karan-spotify.netlify.app/";
+}
+
 const scopes = [
     "user-read-currently-playing",
     "user-read-recently-played",
