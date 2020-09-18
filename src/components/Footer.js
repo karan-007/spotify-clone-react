@@ -53,9 +53,6 @@ function Footer() {
             <div className="footer__right">
                 <Grid container spacing={2}>
                     <Grid item>
-                        <PlaylistPlayIcon />
-                    </Grid>
-                    <Grid item>
                         <VolumeDownIcon />
                     </Grid>
                     <Grid item xs>

@@ -11,7 +11,8 @@ import PlayList from './components/PlayList';
 import Login from './components/Login'
 import { getTokenFromResponse } from "./spotify";
 import AlbumAndTrack from './components/AlbumAndTrack';
-
+import { Provider } from 'react-redux'
+import store from './store/store'
 
 
 function App() {
@@ -34,24 +35,25 @@ function App() {
       <Login />
     </div>
   } else {
-    data = <Router>
-      <div className="App">
-        <div className="upper-body">
-          <SideNav />
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path="/search" component={Search} />
-            <Route path="/library" exact component={Library} />
-            <Route path="/playlist/:id" component={PlayList} />
-            <Route path="/track/:id" component={AlbumAndTrack} />
-            <Route path="/artist/:id" component={AlbumAndTrack} />
-            <Route path="/album/:id" component={AlbumAndTrack} />
-          </Switch>
+    data = <Provider store={store}>
+      <Router>
+        <div className="App">
+          <div className="upper-body">
+            <SideNav />
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path="/search" component={Search} />
+              <Route path="/library" exact component={Library} />
+              <Route path="/playlist/:id" component={PlayList} />
+              <Route path="/track/:id" component={AlbumAndTrack} />
+              <Route path="/artist/:id" component={AlbumAndTrack} />
+              <Route path="/album/:id" component={AlbumAndTrack} />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-
-    </Router>
+      </Router>
+    </Provider>
   }
 
   return (
