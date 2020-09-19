@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchSong } from '../store/index'
+import { songData } from '../store/index'
 import './PlayList.css'
 import fetchApi from '../fetchApi'
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
@@ -31,7 +31,6 @@ function PlayList({ match }) {
         }
     }, [id])
 
-    console.log(toggle)
 
 
 
@@ -39,7 +38,6 @@ function PlayList({ match }) {
 
     async function fetchData(id) {
         let data = await fetchApi(`https://api.spotify.com/v1/playlists/${id}`)
-        console.log(data)
         setplaylist(data.tracks.items)
         setList(data)
         setToggle(true);
@@ -52,13 +50,12 @@ function PlayList({ match }) {
         errorData = "error";
     }
 
-    const playSong = (a) => {
-        console.log(a)
+    const playSong = (data) => {
+        dispatch(songData(data));
     }
 
     if (toggle) {
-        console.log(playlist)
-        console.log(list)
+
 
         playListData =
             <div className="body-info">

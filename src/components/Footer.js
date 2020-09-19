@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
@@ -11,22 +12,28 @@ import "./Footer.css";
 import { Grid, Slider } from "@material-ui/core";
 
 function Footer() {
-    let playing = false;
-    let item = false;
+    let toggle = false;
+
+    let item = useSelector(state => state.player.songData)
+    if (Object.keys(item).length != 0) {
+        toggle = true;
+    }
+    console.log(item)
+
     return (
         <div className="footer">
-            
+
             <div className="footer__left">
-                {item ? (<img
+                {toggle ? (<img
                     className="footer__albumLogo"
-                    src={item.album.images[0].url}
-                    alt={item.name}
+                    src={item.track.album.images[0].url}
+                    alt={item.track.name}
                 />) : null}
 
-                {item ? (
+                {toggle ? (
                     <div className="footer__songInfo">
-                        <h4>{item.name}</h4>
-                        <p>{item.artists.map((artist) => artist.name).join(", ")}</p>
+                        <h4>{item.track.name}</h4>
+                        <p>{item.track.artists.map((artist) => artist.name).join(", ")}</p>
                     </div>
                 ) : (
                         <div className="footer__songInfo">
@@ -37,19 +44,14 @@ function Footer() {
             </div>
 
             <div className="footer__center">
-                {playing ? (
-                    <PauseCircleOutlineIcon
-
-                        fontSize="large"
-                        className="footer__icon"
-                    />
-                ) : (
-                        <PlayCircleOutlineIcon
-
-                            fontSize="large"
-                            className="footer__icon"
-                        />
-                    )}
+                <PlayCircleOutlineIcon
+                    fontSize="large"
+                    className="footer__icon"
+                />
+                <PauseCircleOutlineIcon
+                    fontSize="large"
+                    className="footer__icon"
+                />
             </div>
             <div className="footer__right">
                 <Grid container spacing={2}>

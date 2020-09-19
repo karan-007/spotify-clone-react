@@ -21,12 +21,3 @@ export const fetchSongFail = (error) => {
         payload: error
     }
 }
-
-export const fetchSong = (id) => {
-    return (dispatch) => {
-        fetchApi(`https://api.spotify.com/v1/tracks/${id}`)
-            .then(res => {
-                dispatch(songData(res))
-            })
-    }
-}
