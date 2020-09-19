@@ -10,15 +10,33 @@ import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import "./Footer.css";
 import { Grid, Slider } from "@material-ui/core";
+import { play, pause } from '../store/index'
 
 function Footer() {
+
+    const dispatch = useDispatch();
+
     let toggle = false;
     let item = useSelector(state => state.player.songData)
     if (Object.keys(item).length != 0) {
         toggle = true;
     }
-    console.log(item)
 
+    const playing = useSelector(state => state.player.playing);
+    const audio = useSelector(state => state.player.playingAudio);
+
+    const playSong = () => {
+        if (!playing) {
+            audio.play();
+            dispatch(play())
+        }
+    }
+    const pauseSong = () => {
+        if (playing) {
+            audio.pause();
+            dispatch(pause())
+        }
+    }
     return (
         <div className="footer">
 
@@ -46,21 +64,16 @@ function Footer() {
                 <PlayCircleOutlineIcon
                     fontSize="large"
                     className="footer__icon"
+                    onClick={playSong}
                 />
                 <PauseCircleOutlineIcon
                     fontSize="large"
                     className="footer__icon"
+                    onClick={pauseSong}
                 />
             </div>
             <div className="footer__right">
-                <Grid container spacing={2}>
-                    <Grid item>
-                        <VolumeDownIcon />
-                    </Grid>
-                    <Grid item xs>
-                        <Slider aria-labelledby="continuous-slider" />
-                    </Grid>
-                </Grid>
+
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { songData, saveAudio, play, pauseSong } from '../store/index'
+import { songData, saveAudio, play, pause } from '../store/index'
 import './PlayList.css'
 import fetchApi from '../fetchApi'
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
@@ -56,7 +56,7 @@ function PlayList({ match }) {
     const playSong = (data) => {
         if (playing) {
             audio.pause();
-            dispatch(pauseSong())
+            dispatch(pause())
             dispatch(songData(data));
             let songAudio = data.track.preview_url;
             songAudio = new Audio(songAudio);

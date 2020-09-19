@@ -6,7 +6,7 @@ export const play = () => {
     }
 }
 
-export const pauseSong = () => {
+export const pause = () => {
     return {
         type: actionTypes.PAUSE_SONG
     }
