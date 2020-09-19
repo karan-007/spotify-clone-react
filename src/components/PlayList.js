@@ -54,17 +54,18 @@ function PlayList({ match }) {
     }
 
     const playSong = (data) => {
+        console.log(data)
         if (playing) {
             audio.pause();
             dispatch(pause())
-            dispatch(songData(data));
+            dispatch(songData(data.track));
             let songAudio = data.track.preview_url;
             songAudio = new Audio(songAudio);
             songAudio.play();
             dispatch(saveAudio(songAudio));
             dispatch(play())
         } else {
-            dispatch(songData(data));
+            dispatch(songData(data.track));
             let songAudio = data.track.preview_url;
             let playSong = new Audio(songAudio);
             playSong.play();
