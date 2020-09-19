@@ -17,25 +17,48 @@ import store from './store/store'
 
 function App() {
 
-  const [token, setToken] = useState(false)
+  // const [token, setToken] = useState(false)
 
-  // console.log(window.location.href.split('/')[2])
-  useEffect(() => {
-    const hash = getTokenFromResponse();
-    let _token = hash.access_token;
-    window.location.hash = "";
+  // // console.log(window.location.href.split('/')[2])
+  // useEffect(() => {
+  //   const hash = getTokenFromResponse();
+  //   let _token = hash.access_token;
+  //   window.location.hash = "";
 
-    if (_token) {
-      setToken(true)
-    }
-  }, []);
-  let data = "loading"
-  if (!token) {
-    data = <div className="App">
-      <Login />
-    </div>
-  } else {
-    data = <Provider store={store}>
+  //   if (_token) {
+  //     setToken(true)
+  //   }
+  // }, []);
+  // let data = "loading"
+  // if (!token) {
+  //   data = <div className="App">
+  //     <Login />
+  //   </div>
+  // } else {
+  //   data = <Provider store={store}>
+  //     <Router>
+  //       <div className="App">
+  //         <div className="upper-body">
+  //           <SideNav />
+  //           <Switch>
+  //             <Route path='/' exact component={Home} />
+  //             <Route path="/search" component={Search} />
+  //             <Route path="/library" exact component={Library} />
+  //             <Route path="/playlist/:id" component={PlayList} />
+  //             <Route path="/track/:id" component={AlbumAndTrack} />
+  //             <Route path="/artist/:id" component={AlbumAndTrack} />
+  //             <Route path="/album/:id" component={AlbumAndTrack} />
+  //           </Switch>
+  //         </div>
+  //         <Footer />
+  //       </div>
+  //     </Router>
+  //   </Provider>
+  // }
+
+  return (
+
+    <Provider store={store}>
       <Router>
         <div className="App">
           <div className="upper-body">
@@ -54,12 +77,7 @@ function App() {
         </div>
       </Router>
     </Provider>
-  }
 
-  return (
-    <div>
-      {data}
-    </div>
 
   );
 }

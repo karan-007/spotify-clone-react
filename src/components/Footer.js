@@ -15,6 +15,7 @@ function Footer() {
     let item = false;
     return (
         <div className="footer">
+            
             <div className="footer__left">
                 {item ? (<img
                     className="footer__albumLogo"

@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchSong } from '../store/index'
 import './PlayList.css'
 import fetchApi from '../fetchApi'
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
@@ -6,14 +8,15 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Song from './Song'
 
+
 function PlayList({ match }) {
     const [playlist, setplaylist] = useState([]);
     const [list, setList] = useState({});
     const [toggle, setToggle] = useState(false);
     const [error, setError] = useState("");
-    const [song, setsong] = useState();
-    const [playing, setplaying] = useState();
-    const [change, setchange] = useState(0);
+
+    const dispatch = useDispatch();
+
 
     let playListData = "loading";
     let songs = "loading";
@@ -40,7 +43,6 @@ function PlayList({ match }) {
         setplaylist(data.tracks.items)
         setList(data)
         setToggle(true);
-        setchange(change + 1)
     }
 
 
@@ -51,18 +53,7 @@ function PlayList({ match }) {
     }
 
     const playSong = (a) => {
-        if (playing) {
-            song.pause();
-            let newSong = new Audio(a);
-            newSong.play();
-            setsong(newSong);
-            setplaying(true)
-        } else {
-            let newSong = new Audio(a);
-            newSong.play();
-            setsong(newSong);
-            setplaying(true)
-        }
+        console.log(a)
     }
 
     if (toggle) {
@@ -85,7 +76,7 @@ function PlayList({ match }) {
                 artists={song.track.artists}
                 album={song.track.album.name}
                 duration={song.track.duration_ms}
-                audio={song.track.preview_url}
+                data={song}
                 play={playSong} />
         })
     }

@@ -2,11 +2,11 @@ import React from 'react'
 import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded';
 import './Song.css'
 
-function Song({ img, name, artists, album, duration, audio, play }) {
+function Song({ img, name, artists, album, duration, data, play }) {
 
     return (
         <div className="song">
-            <PlayArrowRoundedIcon onClick={() => play(audio)} className="song-icon" fontSize="large" />
+            <PlayArrowRoundedIcon onClick={() => play(data)} className="song-icon" fontSize="large" />
             <img className="song-img" src={img} alt="" />
             <div className="song-info">
                 <h4>{name}</h4>
