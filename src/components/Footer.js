@@ -13,7 +13,6 @@ import { Grid, Slider } from "@material-ui/core";
 
 function Footer() {
     let toggle = false;
-
     let item = useSelector(state => state.player.songData)
     if (Object.keys(item).length != 0) {
         toggle = true;

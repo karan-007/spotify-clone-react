@@ -1,10 +1,14 @@
 import * as actionTypes from './actionTypes';
-import fetchApi from '../../fetchApi'
 
-
-export const playPause = () => {
+export const play = () => {
     return {
-        type: actionTypes.PLAY_PAUSE
+        type: actionTypes.PLAY_SONG
+    }
+}
+
+export const pauseSong = () => {
+    return {
+        type: actionTypes.PAUSE_SONG
     }
 }
 
@@ -19,5 +23,12 @@ export const fetchSongFail = (error) => {
     return {
         type: actionTypes.FETCH_SONG_FAIL,
         payload: error
+    }
+}
+
+export const saveAudio = (audio) => {
+    return {
+        type: actionTypes.SAVE_AUDIO,
+        payload: audio
     }
 }

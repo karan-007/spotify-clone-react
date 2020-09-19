@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { songData } from '../store/index'
+import { songData, saveAudio, play, pauseSong } from '../store/index'
 import './PlayList.css'
 import fetchApi from '../fetchApi'
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
@@ -14,6 +14,9 @@ function PlayList({ match }) {
     const [list, setList] = useState({});
     const [toggle, setToggle] = useState(false);
     const [error, setError] = useState("");
+
+    const playing = useSelector(state => state.player.playing);
+    const audio = useSelector(state => state.player.playingAudio);
 
     const dispatch = useDispatch();
 
@@ -51,7 +54,23 @@ function PlayList({ match }) {
     }
 
     const playSong = (data) => {
-        dispatch(songData(data));
+        if (playing) {
+            audio.pause();
+            dispatch(pauseSong())
+            dispatch(songData(data));
+            let songAudio = data.track.preview_url;
+            songAudio = new Audio(songAudio);
+            songAudio.play();
+            dispatch(saveAudio(songAudio));
+            dispatch(play())
+        } else {
+            dispatch(songData(data));
+            let songAudio = data.track.preview_url;
+            let playSong = new Audio(songAudio);
+            playSong.play();
+            dispatch(saveAudio(playSong))
+            dispatch(play())
+        }
     }
 
     if (toggle) {
