@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { songData, saveAudio, play, pause } from '../store/index'
 import './PlayList.css'
 import fetchApi from '../fetchApi'
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
@@ -10,10 +12,12 @@ function PlayList({ match }) {
     const [playlist, setplaylist] = useState([]);
     const [list, setList] = useState({});
     const [toggle, setToggle] = useState(false);
-    const [error, setError] = useState("");
-    const [song, setsong] = useState();
-    const [playing, setplaying] = useState();
-    const [change, setchange] = useState(0);
+
+    const playing = useSelector(state => state.player.playing);
+    const audio = useSelector(state => state.player.playingAudio);
+
+    const dispatch = useDispatch();
+
 
     let type = match.path.split("/")[1]
     let playListData = "loading";
@@ -29,7 +33,7 @@ function PlayList({ match }) {
         }
     }, [id, type])
 
-    console.log(toggle)
+
 
 
 
@@ -40,7 +44,7 @@ function PlayList({ match }) {
             let data = await fetchApi(`https://api.spotify.com/v1/tracks/${id}`)
             setplaylist(data)
             setToggle(true);
-            setchange(change + 1)
+
         }
         if (type === "artist") {
             let data = await fetchApi(`https://api.spotify.com/v1/artists/${id}`)
@@ -48,42 +52,41 @@ function PlayList({ match }) {
             let tracks = await fetchApi(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=IN`)
             setplaylist(tracks.tracks)
             setToggle(true);
-            setchange(change + 1)
+
         }
         if (type === "album") {
             let data = await fetchApi(`https://api.spotify.com/v1/albums/${id}`)
             setplaylist(data.tracks.items)
             setList(data)
             setToggle(true);
-            setchange(change + 1)
+
         }
     }
 
 
-    let errorData = "";
 
-    if (error) {
-        errorData = "error";
-    }
 
-    const playSong = (a) => {
+    const playSong = (data) => {
         if (playing) {
-            song.pause();
-            let newSong = new Audio(a);
-            newSong.play();
-            setsong(newSong);
-            setplaying(true)
+            audio.pause();
+            dispatch(pause())
+            dispatch(songData(data));
+            let songAudio = data.preview_url;
+            songAudio = new Audio(songAudio);
+            songAudio.play();
+            dispatch(saveAudio(songAudio));
+            dispatch(play())
         } else {
-            let newSong = new Audio(a);
-            newSong.play();
-            setsong(newSong);
-            setplaying(true)
+            dispatch(songData(data));
+            let songAudio = data.preview_url;
+            let playSong = new Audio(songAudio);
+            playSong.play();
+            dispatch(saveAudio(playSong))
+            dispatch(play())
         }
     }
 
     if (toggle) {
-        console.log(playlist)
-        console.log(list)
 
         if (type === "artist") {
             playListData =
@@ -101,7 +104,7 @@ function PlayList({ match }) {
                     artists={song.artists}
                     album={song.album.name}
                     duration={song.duration_ms}
-                    audio={song.preview_url}
+                    data={song}
                     play={playSong} />
             })
         } else if (type === "track") {
@@ -121,11 +124,9 @@ function PlayList({ match }) {
                     artists={playlist.artists}
                     album={playlist.album.name}
                     duration={playlist.duration_ms}
-                    audio={playlist.preview_url}
+                    data={playlist}
                     play={playSong} />
         } else {
-            console.log(list)
-            console.log(playlist)
             playListData =
                 <div className="body-info">
                     <img src={list.images[0].url} alt="" />
@@ -142,7 +143,7 @@ function PlayList({ match }) {
                     artists={song.artists}
                     album={list.name}
                     duration={song.duration_ms}
-                    audio={song.preview_url}
+                    data={song}
                     play={playSong} />
             })
         }

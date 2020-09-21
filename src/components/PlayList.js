@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { songData, saveAudio, play, pause } from '../store/index'
 import './PlayList.css'
 import fetchApi from '../fetchApi'
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
@@ -6,14 +8,18 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Song from './Song'
 
+
 function PlayList({ match }) {
     const [playlist, setplaylist] = useState([]);
     const [list, setList] = useState({});
     const [toggle, setToggle] = useState(false);
     const [error, setError] = useState("");
-    const [song, setsong] = useState();
-    const [playing, setplaying] = useState();
-    const [change, setchange] = useState(0);
+
+    const playing = useSelector(state => state.player.playing);
+    const audio = useSelector(state => state.player.playingAudio);
+
+    const dispatch = useDispatch();
+
 
     let playListData = "loading";
     let songs = "loading";
@@ -28,7 +34,6 @@ function PlayList({ match }) {
         }
     }, [id])
 
-    console.log(toggle)
 
 
 
@@ -36,11 +41,9 @@ function PlayList({ match }) {
 
     async function fetchData(id) {
         let data = await fetchApi(`https://api.spotify.com/v1/playlists/${id}`)
-        console.log(data)
         setplaylist(data.tracks.items)
         setList(data)
         setToggle(true);
-        setchange(change + 1)
     }
 
 
@@ -50,24 +53,29 @@ function PlayList({ match }) {
         errorData = "error";
     }
 
-    const playSong = (a) => {
+    const playSong = (data) => {
+        console.log(data)
         if (playing) {
-            song.pause();
-            let newSong = new Audio(a);
-            newSong.play();
-            setsong(newSong);
-            setplaying(true)
+            audio.pause();
+            dispatch(pause())
+            dispatch(songData(data.track));
+            let songAudio = data.track.preview_url;
+            songAudio = new Audio(songAudio);
+            songAudio.play();
+            dispatch(saveAudio(songAudio));
+            dispatch(play())
         } else {
-            let newSong = new Audio(a);
-            newSong.play();
-            setsong(newSong);
-            setplaying(true)
+            dispatch(songData(data.track));
+            let songAudio = data.track.preview_url;
+            let playSong = new Audio(songAudio);
+            playSong.play();
+            dispatch(saveAudio(playSong))
+            dispatch(play())
         }
     }
 
     if (toggle) {
-        console.log(playlist)
-        console.log(list)
+
 
         playListData =
             <div className="body-info">
@@ -85,7 +93,7 @@ function PlayList({ match }) {
                 artists={song.track.artists}
                 album={song.track.album.name}
                 duration={song.track.duration_ms}
-                audio={song.track.preview_url}
+                data={song}
                 play={playSong} />
         })
     }

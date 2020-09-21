@@ -16,7 +16,7 @@ function Search({ history }) {
         if (e.target.value != "") {
             fetchApi(`https://api.spotify.com/v1/search?q=${e.target.value}&type=track%2Cartist%2Cplaylist%2Calbum`)
                 .then((res) => {
-                    console.log(res)
+
                     setData(res);
                     setLoad(true);
                 })
