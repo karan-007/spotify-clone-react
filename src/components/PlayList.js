@@ -13,7 +13,7 @@ function PlayList({ match }) {
     const [playlist, setplaylist] = useState([]);
     const [list, setList] = useState({});
     const [toggle, setToggle] = useState(false);
-    const [error, setError] = useState("");
+
 
     const playing = useSelector(state => state.player.playing);
     const audio = useSelector(state => state.player.playingAudio);
@@ -47,11 +47,7 @@ function PlayList({ match }) {
     }
 
 
-    let errorData = "";
 
-    if (error) {
-        errorData = "error";
-    }
 
     const playSong = (data) => {
         console.log(data)

@@ -15,6 +15,7 @@
 .song-icon {
   flex: 0.05;
   padding: 0 10px;
+  cursor: pointer;
 }
 .song-img {
   /* flex: 0.1; */
