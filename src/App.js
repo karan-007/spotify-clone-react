@@ -1,21 +1,70 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Home from './components/Home'
+import fetchApi from './fetchApi'
+import SideNav from './components/SideNav'
+import Footer from './components/Footer'
+import Search from './components/Search'
+import Library from './components/Library'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import PlayList from './components/PlayList';
+import Login from './components/Login'
+import { getTokenFromResponse } from "./spotify";
+import AlbumAndTrack from './components/AlbumAndTrack';
+import { Provider } from 'react-redux'
+import store from './store/store'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+
+function App() {
+
+  const [token, setToken] = useState(false)
+
+  // console.log(window.location.href.split('/')[2])
+  useEffect(() => {
+    const hash = getTokenFromResponse();
+    let _token = hash.access_token;
+    window.location.hash = "";
+
+    if (_token) {
+      setToken(true)
+    }
+  }, []);
+  let data = "loading"
+  if (!token) {
+    data = <div className="App">
+      <Login />
+    </div>
+  } else {
+    data = <Provider store={store}>
+      <Router>
+        <div className="App">
+          <div className="upper-body">
+            <SideNav />
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path="/search" component={Search} />
+              <Route path="/library" exact component={Library} />
+              <Route path="/playlist/:id" component={PlayList} />
+              <Route path="/track/:id" component={AlbumAndTrack} />
+              <Route path="/artist/:id" component={AlbumAndTrack} />
+              <Route path="/album/:id" component={AlbumAndTrack} />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      </Router>
+    </Provider>
   }
+
+  return (
+
+    <div>
+      {data}
+    </div>
+
+
+  );
 }
+
 
 export default App;

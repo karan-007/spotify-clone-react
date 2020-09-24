@@ -1,0 +1,64 @@
+.playlist {
+  flex: 0.82;
+  background-color: #121212;
+  color: #fff;
+  height: 85vh;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+.playlist::-webkit-scrollbar {
+  display: none;
+}
+.body-info {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  background-color: #484848;
+}
+.body-info > img {
+  height: 20vw;
+  margin: 0 20px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+}
+
+.body-infoText {
+  flex: 1;
+}
+.body-infoText strong {
+  font-size: 1.5em;
+}
+
+.body-infoText > h2 {
+  font-weight: bolder;
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.body-infoText > p {
+  font-size: 14px;
+}
+
+.body-shuffle {
+  font-size: 80px !important;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.body-icons {
+  display: flex;
+  align-items: center;
+}
+
+.body-icons > .MuiSvgIcon-root {
+  margin-right: 20px;
+}
+
+.body-shuffle:hover {
+  transition: 100ms transform ease-in;
+  transform: scale(1.08);
+}
+.body-songs {
+  z-index: 1;
+  margin: 0 -30px;
+}

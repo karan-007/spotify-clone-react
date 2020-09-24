@@ -1,0 +1,50 @@
+.song {
+  display: flex;
+  width: 95%;
+  align-items: center;
+  transition: 200ms color ease-in;
+  padding: 10px 0;
+  margin-left: 20px;
+  color: grey;
+}
+.song:hover {
+  background-color: black;
+  color: #fff;
+  border-radius: 5px;
+}
+.song-icon {
+  flex: 0.05;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.song-img {
+  /* flex: 0.1; */
+  width: 50px;
+  height: 50px;
+  padding: 0 10px;
+}
+.song-info {
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+.song-album {
+  flex: 0.35;
+  padding: 0 10px;
+  font-size: 0.9em;
+}
+.song-duration {
+  flex: 0.1;
+  padding: 0 10px;
+  font-size: 0.9em;
+  display: flex;
+}
+.song-info h4 {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+.song-info span {
+  font-size: 0.8em;
+}
