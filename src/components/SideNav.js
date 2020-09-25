@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
-import './sideNav.css'
+import '../style/sideNav.css'
 import NavOption from './NavOption'
 import { Link } from 'react-router-dom'
 import fetchApi from '../fetchApi'

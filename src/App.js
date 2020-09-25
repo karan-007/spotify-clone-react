@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './style/App.css';
 import Home from './components/Home'
+import ProfileButton from './components/profileButton'
 import fetchApi from './fetchApi'
 import SideNav from './components/SideNav'
 import Footer from './components/Footer'
@@ -13,7 +14,6 @@ import { getTokenFromResponse } from "./spotify";
 import AlbumAndTrack from './components/AlbumAndTrack';
 import { Provider } from 'react-redux'
 import store from './store/store'
-
 
 function App() {
 
@@ -38,10 +38,12 @@ function App() {
     data = <Provider store={store}>
       <Router>
         <div className="App">
+          <ProfileButton />
           <div className="upper-body">
             <SideNav />
             <Switch>
               <Route path='/' exact component={Home} />
+              {/* <Route path="/profile" component={}> */}
               <Route path="/search" component={Search} />
               <Route path="/library" exact component={Library} />
               <Route path="/playlist/:id" component={PlayList} />

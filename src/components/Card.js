@@ -1,5 +1,5 @@
 import React from 'react'
-import './Card.css'
+import '../style/Card.css'
 import PlayCircleFilledRoundedIcon from '@material-ui/icons/PlayCircleFilledRounded';
 
 function Card({ name, data, img, artist, onClick }) {

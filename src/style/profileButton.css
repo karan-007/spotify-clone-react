@@ -1,0 +1,15 @@
+.profile-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 30px;
+    color:white;
+    background-color:black;
+    border-style: none;
+  }
+  
+  .profile-btn:hover{
+    background-color:gray;
+  }
+
+  

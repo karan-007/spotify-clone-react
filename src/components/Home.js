@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './home.css'
+import '../style/home.css'
 import fetchApi from '../fetchApi';
 import Card from './Card'
 import { withRouter } from 'react-router-dom'

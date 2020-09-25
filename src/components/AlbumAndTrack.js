@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { songData, saveAudio, play, pause } from '../store/index'
-import './PlayList.css'
+import '../style/PlayList.css'
 import fetchApi from '../fetchApi'
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import FavoriteIcon from "@material-ui/icons/Favorite";
