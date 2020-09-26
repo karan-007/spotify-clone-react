@@ -65,7 +65,7 @@ function Footer() {
             color: like ? "red" : "inherit",
           }}
         >
-          <FavoriteIcon fontSize="large" className="like-btn" />
+          <FavoriteIcon fontSize="medium" className="like-btn" />
         </div>
           </div>
         ) : (
