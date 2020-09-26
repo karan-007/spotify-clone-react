@@ -1,0 +1,28 @@
+/* .body {
+  margin: 0;
+  padding: 0;
+} */
+
+.cover {
+  background-color: #282828;
+  color: white;
+  height: 45%;
+  width: 100%;
+}
+
+.text {
+    padding-top: 30px;
+}
+
+.user-playlist {
+    color: white;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.playlist-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+

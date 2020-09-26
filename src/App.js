@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './style/App.css';
 import Home from './components/Home'
-import ProfileButton from './components/profileButton'
+import ProfileButton from './components/ProfileButton'
 import fetchApi from './fetchApi'
+import Profile from './components/Profile'
 import SideNav from './components/SideNav'
 import Footer from './components/Footer'
 import Search from './components/Search'
@@ -43,7 +44,7 @@ function App() {
             <SideNav />
             <Switch>
               <Route path='/' exact component={Home} />
-              {/* <Route path="/profile" component={}> */}
+              <Route path="/profile" component={Profile}/>
               <Route path="/search" component={Search} />
               <Route path="/library" exact component={Library} />
               <Route path="/playlist/:id" component={PlayList} />
