@@ -1,5 +1,5 @@
 import React from 'react'
-import './NavOption.css'
+import '../style/NavOption.css'
 
 function NavOption({ title, Icon }) {
     // console.log(title)

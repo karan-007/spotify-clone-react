@@ -1,6 +1,6 @@
 import React from 'react'
 import PlayArrowRoundedIcon from '@material-ui/icons/PlayArrowRounded';
-import './Song.css'
+import '../style/Song.css'
 
 function Song({ img, name, artists, album, duration, data, play }) {
 
