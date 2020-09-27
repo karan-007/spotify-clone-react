@@ -10,16 +10,19 @@ import Search from './components/Search'
 import Library from './components/Library'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PlayList from './components/PlayList';
-import Login from './components/Login'
+import LandingPage from './components/LandingPage'
 import { getTokenFromResponse } from "./spotify";
 import AlbumAndTrack from './components/AlbumAndTrack';
 import { Provider } from 'react-redux'
+import Login from './components/Login'
 import store from './store/store'
 import CreatePlaylist from './components/CreatePlaylist';
+import SignUp from './components/SignUp';
 
 function App() {
 
   const [token, setToken] = useState(false)
+
 
   // console.log(window.location.href.split('/')[2])
   useEffect(() => {
@@ -34,7 +37,13 @@ function App() {
   let data = "loading"
   if (!token) {
     data = <div className="App">
-      <Login />
+      <Router>
+        <Switch>
+          <Route exact path='/'><LandingPage /> </Route>
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={SignUp} />
+        </Switch>
+      </Router>
     </div>
   } else {
     data = <Provider store={store}>
@@ -45,7 +54,7 @@ function App() {
             <SideNav />
             <Switch>
               <Route path='/' exact component={Home} />
-              <Route path="/profile" component={Profile}/>
+              <Route path="/profile" component={Profile} />
               <Route path="/search" component={Search} />
               <Route path="/createPlaylist" exact component={CreatePlaylist} />
               <Route path="/library" exact component={Library} />
