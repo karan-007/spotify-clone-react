@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Card from "./Card";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
@@ -6,13 +7,13 @@ import "../style/Profile.css";
 
 let playlistData = [
   {
+    playlistName: "Liked songs",
+  },
+  {
     playlistName: "work out playlist",
   },
   {
     playlistName: "bus ride playlist",
-  },
-  {
-    playlistName: "chill out playlist",
   },
 ];
 
@@ -45,7 +46,9 @@ function Profile() {
         <h2>Playlists</h2>
         <div className="playlist-card">
           {playlistData.map((item) => (
-            <Card name={item.playlistName} />
+            // <Link to="/playlist/:id">
+              <Card name={item.playlistName} />
+            //</Link>
           ))}
         </div>
       </div>

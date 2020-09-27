@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import '../style/sideNav.css'
 import NavOption from './NavOption'
@@ -60,6 +62,8 @@ function SideNav() {
             <br />
             <br />
             <strong className="sideNav-title">PLAYLISTS</strong>
+            <Link className="link-style"><NavOption Icon={AddBoxIcon} title="Create Playlist"/></Link>
+            <Link className="link-style"><NavOption Icon={FavoriteBorderIcon} title="Liked Songs"/></Link>
             <hr />
             {playListData}
         </div >

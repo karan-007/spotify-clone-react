@@ -22,8 +22,9 @@
 }
 .sideNav-title {
   color: grey;
-  margin-left: 10%;
+  margin: 10%; 
 }
+
 hr {
   width: 80%;
   background-color: grey;
