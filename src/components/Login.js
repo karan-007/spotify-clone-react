@@ -1,5 +1,4 @@
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.css";
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -37,9 +36,6 @@ class Login extends React.Component {
             this.validator.showMessages();
             this.forceUpdate();
         }
-
-
-
     }
 
     render() {

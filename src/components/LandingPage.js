@@ -13,7 +13,7 @@ function LandingPage() {
                 alt=""
             />
             <a href={accessUrl}>SPOTIFY LOGIN</a>
-            <Link to='signup'>SIGNUP</Link>
+            <Link to='/signup'>SIGNUP</Link>
             <Link to='/login'>LOGIN</Link>
         </div>
     );
