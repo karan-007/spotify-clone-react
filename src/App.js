@@ -15,6 +15,7 @@ import { getTokenFromResponse } from "./spotify";
 import AlbumAndTrack from './components/AlbumAndTrack';
 import { Provider } from 'react-redux'
 import store from './store/store'
+import CreatePlaylist from './components/CreatePlaylist';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
               <Route path='/' exact component={Home} />
               <Route path="/profile" component={Profile}/>
               <Route path="/search" component={Search} />
+              <Route path="/createPlaylist" exact component={CreatePlaylist} />
               <Route path="/library" exact component={Library} />
               <Route path="/playlist/:id" component={PlayList} />
               <Route path="/track/:id" component={AlbumAndTrack} />

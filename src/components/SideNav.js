@@ -62,7 +62,7 @@ function SideNav() {
             <br />
             <br />
             <strong className="sideNav-title">PLAYLISTS</strong>
-            <Link className="link-style"><NavOption Icon={AddBoxIcon} title="Create Playlist"/></Link>
+            <Link className="link-style" to="/createPlaylist"><NavOption Icon={AddBoxIcon} title="Create Playlist"/></Link>
             <Link className="link-style"><NavOption Icon={FavoriteBorderIcon} title="Liked Songs"/></Link>
             <hr />
             {playListData}

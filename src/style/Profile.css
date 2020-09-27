@@ -53,6 +53,7 @@
 .playlist-card {
     display: flex;
     flex-wrap: wrap;
+    margin: 30px;
 }
 
 

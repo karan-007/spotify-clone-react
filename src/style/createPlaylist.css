@@ -1,0 +1,34 @@
+.body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+  }
+
+  .textField {
+      font-size: 1rem;
+      height: 40px;
+      color: white;
+      background-color:grey;
+      border-radius: 5px;
+      border: none;
+      border-style: none;
+  }
+
+  .btn {
+  color: white;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+  border-radius: 99px;
+  font-weight: 800;
+  background-color: #1db954;
+  text-align: center;
+  cursor: pointer;
+  }
+
+  .btn:hover{
+    background-color: #1aa34a; 
+ }
