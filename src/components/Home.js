@@ -3,6 +3,7 @@ import '../style/home.css'
 import fetchApi from '../fetchApi';
 import Card from './Card'
 import { withRouter } from 'react-router-dom'
+import axios from '../apiConfig/API'
 
 function Home({ history }) {
 
@@ -35,26 +36,10 @@ function Home({ history }) {
     }
     
 const fetchTrack=()=>{
-    fetch("http://localhost:3001/albums")
-    .then(res=>console.log(res.json()))
-    // .then(setTrack(res))
-    // .then(console.log)
+    axios.get("/albums")
+    .then(res=>setTrack(res.data))
 }
     
-    // const fetchTrack = () => {
-    //     return new Promise((resolve, reject) => {
-    //         fetchApi("http://localhost:3001/albums")
-    //             .then(res => {
-    //                 console.log(res.items)
-    //                 setTrack(res)
-    //                 resolve("done")
-    //             })
-    //             .catch(err => {
-    //                 console.log(err)
-    //             })
-    //     })
-    // }
-
     // const fetchTrack = () => {
     //     return new Promise((resolve, reject) => {
     //         fetchApi("https://api.spotify.com/v1/me/top/tracks")
@@ -69,16 +54,19 @@ const fetchTrack=()=>{
     // }
 
     const fetchArtist = () => {
-        return new Promise((resolve, reject) => {
-            fetchApi("https://api.spotify.com/v1/me/top/artists")
-                .then(res => {
-                    setArtist(res.items)
-                    resolve("done")
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        })
+        // return new Promise((resolve, reject) => {
+        //     fetchApi("https://api.spotify.com/v1/me/top/artists")
+        //         .then(res => {
+        //             setArtist(res.items)
+        //             resolve("done")
+        //         })
+        //         .catch(err => {
+        //             console.log(err)
+        //         })
+        // })
+
+    axios.get("/artists")
+    .then(res=>setArtist(res.data))
     }
 
     function goto(link) {
@@ -92,21 +80,22 @@ const fetchTrack=()=>{
         // console.log(topTrack, "top track ")
         showData = <div>
             <div className="cardDiv">
-                <h1>Your Top Tracks</h1>
-                {/* <div className="cardList">
+                <h1>Albums</h1>
+                <div className="cardList">
                     {topTrack.slice(0, 5).map((song) => {
                         // console.log(song)
                         // return <Card onClick={() => goto(`/track/${song.id}`)} key={song.id} name={song.name} artist={song.artists} img={song.album.images[0].url} />
-                        return <Card onClick={() => goto(`/track/${song.id}`)} key={song.id} name={song.name} img={song.img_url} />
+                        return <Card key={song.id} name={song.name} img={song.img_url} />
                     })}
-                </div> */}
+                </div>
             </div>
             <div className="cardDiv">
-                <h1>Your Top Artist</h1>
+                <h1>Artists</h1>
                 <div className="cardList">
                     {topArtist.slice(0, 5).map((artist) => {
                         // console.log(artist)
-                        return <Card onClick={() => goto(`/Artist/${artist.id}`)} key={artist.id} name={artist.name} data="Artist" img={artist.images[0].url} />
+                        //return <Card onClick={() => goto(`/Artist/${artist.id}`)} key={artist.id} name={artist.name} data="Artist" img={artist.images[0].url} />
+                        return <Card key={artist.id} name={artist.name} img={artist.img_url} />
                     })}
                 </div>
             </div>
