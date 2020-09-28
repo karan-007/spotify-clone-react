@@ -5,7 +5,6 @@ import '../style/PlayList.css'
 import fetchApi from '../fetchApi'
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Song from './Song'
 
 
@@ -13,6 +12,11 @@ function PlayList({ match }) {
     const [playlist, setplaylist] = useState([]);
     const [list, setList] = useState({});
     const [toggle, setToggle] = useState(false);
+    const [like, setLike] = useState(false);
+  
+  function handleClick() {
+    setLike(!like);
+  }
 
 
     const playing = useSelector(state => state.player.playing);
@@ -101,8 +105,12 @@ function PlayList({ match }) {
                     <PlayCircleFilledIcon
                         className="body-shuffle"
                     />
-                    <FavoriteIcon fontSize="large" />
-                    <MoreHorizIcon />
+                    <div
+          onClick={handleClick}
+          style={{
+            color: like ? "red" : "inherit",
+          }}>
+          <FavoriteIcon fontSize="large" className="fav-btn"/></div>
                 </div>
             </div>
             {songs}
