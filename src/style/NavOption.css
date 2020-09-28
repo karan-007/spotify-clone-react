@@ -2,7 +2,6 @@
   display: flex;
   cursor: pointer;
   align-items: center;
-  height: 40px;
   color: grey;
   transition: 200ms color ease-in;
   margin-left: 10%;
@@ -10,6 +9,7 @@
 }
 .navOption:hover {
   color: #fff;
+  text-decoration: none !important;
 }
 .navOption:focus {
   color: #fff;
@@ -23,3 +23,4 @@
   font-size: 0.9em;
   font-weight: bold;
 }
+

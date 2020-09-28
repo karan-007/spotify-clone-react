@@ -13,6 +13,7 @@
 
 .textField {
   font-size: 1rem;
+  font-weight: bold;
   height: 40px;
   color: white;
   background-color: grey;
@@ -34,5 +35,6 @@
 }
 
 .btn:hover {
+  color: white;
   background-color: #1aa34a;
 }

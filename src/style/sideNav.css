@@ -1,5 +1,6 @@
 .icon {
   color: grey;
+  margin: 5px;
 }
 .icon:hover {
   color: #fff;
@@ -18,13 +19,13 @@
   margin: 5%;
 }
 .link-style {
+  margin: 5px 0;
   text-decoration: none;
 }
 .sideNav-title {
   color: grey;
   margin: 10%; 
 }
-
 hr {
   width: 80%;
   background-color: grey;

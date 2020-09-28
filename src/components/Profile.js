@@ -35,7 +35,7 @@ function Profile() {
         <AccountCircleIcon style={style} />
         <div className="pro-info">
           <h5 className="text">Profile</h5>
-          <h1 className="text">User</h1>
+          <h1>User</h1>
           <input type="file" id="file" accept="image/*" class="inputfile" />
           <label for="file">
             <CameraAltIcon className="cam" />

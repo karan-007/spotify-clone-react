@@ -8,6 +8,7 @@
   color: white;
   height: 45%;
   width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .pro-pic {
@@ -29,6 +30,7 @@
 }
 
 .inputfile {
+  margin-top: 30px;
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;

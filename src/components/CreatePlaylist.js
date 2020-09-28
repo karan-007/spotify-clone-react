@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
 function CreatePlaylist() {
     function handleClick(){
-        alert("playlist created")
+        alert("playlist created!")
     }
   const classes = useStyles();
   return (
