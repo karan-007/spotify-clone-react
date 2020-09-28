@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axios from '../apiConfig/API';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SimpleReactValidator from 'simple-react-validator';
@@ -26,7 +26,7 @@ class Login extends React.Component {
         if (this.validator.allValid()) {
             axios({
                 method: 'post',
-                url: 'http://localhost:3001/login',
+                url: '/login',
                 data: this.state
             })
                 .then(res => res.data)
@@ -70,7 +70,9 @@ class Login extends React.Component {
 
                     <Button type='submit' variant='outline-primary' size='md' block>Login</Button><br />
                     <hr /> <br />
+
                     <span><b>Don't have an account?</b></span><br /><br />
+
                     <Link to='signup' >
                         <Button type='submit' variant='outline-secondary' size='md' block >SignUp Here</Button>
                     </Link>

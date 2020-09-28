@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { Component } from 'react';
+import axios from '../apiConfig/API';
 import SimpleReactValidator from 'simple-react-validator';
 
 class SignUp extends Component {
@@ -29,7 +29,7 @@ class SignUp extends Component {
         if (this.validator.allValid()) {
             axios({
                 method: 'post',
-                url: 'http://localhost:3001/signup',
+                url: '/signup',
                 data: this.state
             })
             .then(res => console.log(res))
