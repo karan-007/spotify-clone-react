@@ -21,21 +21,33 @@ class Login extends React.Component {
         })
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
-        if (this.validator.allValid()) {
-            axios({
-                method: 'post',
-                url: '/login',
-                data: this.state
-            })
-                .then(res => res.data)
-                .then((data) => localStorage.setItem('token', data.token))
-                .catch(err => console.error(err))
-        } else {
-            this.validator.showMessages();
-            this.forceUpdate();
+
+        try{
+            if (this.validator.allValid()) {
+                const response = await axios({
+                    method: 'post',
+                    url: '/login',
+                    data: this.state
+                })
+
+                response = await response.data;
+                localStorage.setItem('token', response.token)
+
+            }             
+            else {
+                this.validator.showMessages();
+                this.forceUpdate();
+            }
+            
         }
+
+        catch(err){
+            window.alert(err.response.data.msg);
+            console.log(err)
+        }
+        
     }
 
     render() {
@@ -43,7 +55,12 @@ class Login extends React.Component {
             <div className='container w-50 mt-5 flex'>
 
                 <div className='form-group image'>
-                    <img src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Black.png' height='60px' width='200px' />
+                    <img 
+                    src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Black.png' 
+                    height='60px' 
+                    width='200px' 
+                    alt='spotify logo'
+                    />
                 </div>
                 <form className='mt-5' onSubmit={this.handleSubmit}>
                     <div className='form-group'>
@@ -68,13 +85,13 @@ class Login extends React.Component {
                         <span className='color-red'>{this.validator.message('password', this.state.password, 'required|min:8')}</span>
                     </div>
 
-                    <Button type='submit' variant='outline-primary' size='md' block>Login</Button><br />
+                    <Button type='submit' variant='outline-primary' size='md' block>LOGIN</Button><br />
                     <hr /> <br />
 
                     <span><b>Don't have an account?</b></span><br /><br />
 
-                    <Link to='signup' >
-                        <Button type='submit' variant='outline-secondary' size='md' block >SignUp Here</Button>
+                    <Link to='signup' className='text-decoration-none' >
+                        <Button type='submit' variant='outline-secondary' size='md' block >SIGNUP HERE</Button>
                     </Link>
 
                 </form>
