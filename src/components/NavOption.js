@@ -7,7 +7,7 @@ function NavOption({ title, Icon }) {
 
         <div className="navOption">
             {Icon && <Icon className="icon" />}
-            {Icon ? <h4>{title}</h4> : <p>{title}</p>}
+            {Icon ? <h5>{title}</h5> : <p>{title}</p>}
         </div>
     )
 }

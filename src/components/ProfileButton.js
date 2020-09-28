@@ -7,6 +7,9 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
   button: {
+    position:'absolute',
+    top:0,
+    right:0,
     margin: theme.spacing(1),
     margin: "30px 30px 5px",
     color:"white",

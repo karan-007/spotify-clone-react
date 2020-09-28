@@ -1,23 +1,26 @@
-.card {
+.card-alpha {
   width: 19%;
   border-radius: 7px;
   background-color: #282828;
   margin-right: 20px;
   cursor: pointer;
   margin: 5px;
+  overflow: hidden;
 }
 
 .card-data {
   display: flex;
   flex-direction: column;
   color: #fff;
+  background-color: #282828;
   position: relative;
   z-index: 0;
+  flex: 1;
 }
 
 .card-data img {
-  width: 85%;
-  height: 150px;
+  width: 80%;
+  height: 140px;
   align-self: center;
   margin-top: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

@@ -1,18 +1,4 @@
-.profile-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 30px;
-    color:white;
-    background-color:black;
-    border-style: none;
-  }
-  
-  .profile-btn:hover{
-    background-color:gray;
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
+ /* The container <div> - needed to position the dropdown content */
   .dropdown {
     position: absolute;
     display: flex;
@@ -25,7 +11,9 @@
   
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
-    position: relative;
+    position: absolute;
+    top:75px;
+    right: 25px;
     background-color: black;
     width: 100px;
     border-radius: 5px;
@@ -40,8 +28,10 @@
   }
   
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color:#282828;
-    border-radius: 5px;}
+  .dropdown-content a:hover {
+    color:white;
+    background-color:#282828;
+    border-radius: 5px;
+    text-decoration: none;
+  }
   
-  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-  .show {display:block;} 

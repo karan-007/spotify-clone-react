@@ -62,3 +62,9 @@
   z-index: 1;
   margin: 0 -30px;
 }
+
+.fav-btn:hover {
+  transition: transform 0.2s ease-in-out;
+  transform: scale(1.2) !important;
+  cursor: pointer;
+}
