@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 function Home({ history }) {
 
+
     const [recentList, setRecent] = useState([]);
     const [topTrack, setTrack] = useState([]);
     const [topArtist, setArtist] = useState([]);
@@ -32,19 +33,40 @@ function Home({ history }) {
                 })
         })
     }
+    
+const fetchTrack=()=>{
+    fetch("http://localhost:3001/albums")
+    .then(res=>console.log(res.json()))
+    // .then(setTrack(res))
+    // .then(console.log)
+}
+    
+    // const fetchTrack = () => {
+    //     return new Promise((resolve, reject) => {
+    //         fetchApi("http://localhost:3001/albums")
+    //             .then(res => {
+    //                 console.log(res.items)
+    //                 setTrack(res)
+    //                 resolve("done")
+    //             })
+    //             .catch(err => {
+    //                 console.log(err)
+    //             })
+    //     })
+    // }
 
-    const fetchTrack = () => {
-        return new Promise((resolve, reject) => {
-            fetchApi("https://api.spotify.com/v1/me/top/tracks")
-                .then(res => {
-                    setTrack(res.items)
-                    resolve("done")
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        })
-    }
+    // const fetchTrack = () => {
+    //     return new Promise((resolve, reject) => {
+    //         fetchApi("https://api.spotify.com/v1/me/top/tracks")
+    //             .then(res => {
+    //                 setTrack(res.items)
+    //                 resolve("done")
+    //             })
+    //             .catch(err => {
+    //                 console.log(err)
+    //             })
+    //     })
+    // }
 
     const fetchArtist = () => {
         return new Promise((resolve, reject) => {
@@ -71,12 +93,13 @@ function Home({ history }) {
         showData = <div>
             <div className="cardDiv">
                 <h1>Your Top Tracks</h1>
-                <div className="cardList">
+                {/* <div className="cardList">
                     {topTrack.slice(0, 5).map((song) => {
                         // console.log(song)
-                        return <Card onClick={() => goto(`/track/${song.id}`)} key={song.id} name={song.name} artist={song.artists} img={song.album.images[0].url} />
+                        // return <Card onClick={() => goto(`/track/${song.id}`)} key={song.id} name={song.name} artist={song.artists} img={song.album.images[0].url} />
+                        return <Card onClick={() => goto(`/track/${song.id}`)} key={song.id} name={song.name} img={song.img_url} />
                     })}
-                </div>
+                </div> */}
             </div>
             <div className="cardDiv">
                 <h1>Your Top Artist</h1>
