@@ -34,8 +34,9 @@ class Login extends React.Component {
 
                 response = await response.data;
                 localStorage.setItem('token', response.token)
-                window.location.reload();
-                history.push('/')
+                this.props.history.push('/')
+                this.props.handleLoggedIn()               
+
 
             }             
             else {
@@ -46,7 +47,7 @@ class Login extends React.Component {
         }
 
         catch(err){
-            window.alert(err.response.data.msg);
+            window.alert(err);
             console.log(err)
         }
         
