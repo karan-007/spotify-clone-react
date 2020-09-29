@@ -7,6 +7,7 @@ import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Song from './Song'
+import axios from "../apiConfig/API";
 
 function PlayList({ match }) {
     const [playlist, setplaylist] = useState([]);
@@ -47,10 +48,12 @@ function PlayList({ match }) {
 
         }
         if (type === "artist") {
-            let data = await fetchApi(`https://api.spotify.com/v1/artists/${id}`)
-            setList(data)
-            let tracks = await fetchApi(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=IN`)
-            setplaylist(tracks.tracks)
+            let data = await axios.get(`/artists/${id}`)
+            setList(data.data)
+            console.log(data.data)
+            //setList(data)
+            //let tracks = await fetchApi(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=IN`)
+            //setplaylist(tracks.tracks)
             setToggle(true);
 
         }
@@ -91,19 +94,19 @@ function PlayList({ match }) {
         if (type === "artist") {
             playListData =
                 <div className="body-info">
-                    <img src={list.images[0].url} alt="" />
+                    <img src={list.img_url} alt="" />
                     <div className="body-infoText">
-                        <strong>{list.type}</strong>
-                        <h2>{list.name}</h2>
+                        <strong>Artist</strong>
+                        <h2>{list[0].artist_name}</h2>
                     </div>
                 </div>
-            songs = playlist.map((song) => {
-                return <Song key={song.id}
-                    img={song.album.images[0].url}
-                    name={song.name}
-                    artists={song.artists}
-                    album={song.album.name}
-                    duration={song.duration_ms}
+            songs = list.map((song) => {
+                return <Song key={song.song_id}
+                    img={song.img_url}
+                    name={song.song_name}
+                    artists={song.artist_name}
+                    // album={song.album.name}
+                    duration={song.duration}
                     data={song}
                     play={playSong} />
             })
