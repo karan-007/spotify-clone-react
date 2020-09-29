@@ -16,6 +16,7 @@ class SignUp extends Component {
             username: '',
             gender: ''
         }
+        
         this.validator = new SimpleReactValidator();
     }
 
@@ -31,14 +32,16 @@ class SignUp extends Component {
 
         try {
             if (this.validator.allValid()) {
+                // eslint-disable-next-line
                 const response = await axios({
                     method: 'post',
                     url: '/signup',
                     data: this.state
                 });
 
-                const confirm = window.confirm(`${response.data.msg}`);
-                confirm ? window.location.reload(): null
+                const confirm = window.confirm('Signed up successfully, press ok to login');
+                // eslint-disable-next-line
+                confirm ? this.props.history.push('/login') : null
             }
             else {
                 this.validator.showMessages();
@@ -63,13 +66,13 @@ class SignUp extends Component {
                 <form className='flex' onSubmit={this.handleSubmit}>
 
                     <div className='form-group image'>
-                        <img src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Black.png' 
-                        height='60px' 
-                        width='200px'
-                        alt='spotify logo'
-                         />
+                        <img src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Black.png'
+                            height='60px'
+                            width='200px'
+                            alt='spotify logo'
+                        />
                     </div>
-                    
+
                     <div className='form-group'>
                         <label><b>What's your name?</b></label>
                         <input
@@ -142,44 +145,59 @@ class SignUp extends Component {
                         <label><b>Gender</b></label><br />
 
                         <label className="radio-inline">
-                            <input 
-                            type="radio" 
-                            name='gender' 
-                            onChange={this.handleChange} 
-                            value="male" 
-                            onBlur={() => this.validator.showMessageFor('gender')} 
+                            <input
+                                type="radio"
+                                name='gender'
+                                onChange={this.handleChange}
+                                value="male"
+                                onBlur={() => this.validator.showMessageFor('gender')}
                             />&nbsp;Male
                         </label>&nbsp;&nbsp;&nbsp;
 
                         <label className="radio-inline">
-                            <input 
-                            type="radio" 
-                            name='gender' 
-                            onChange={this.handleChange} 
-                            value="female" 
-                            onBlur={() => this.validator.showMessageFor('gender')} 
+                            <input
+                                type="radio"
+                                name='gender'
+                                onChange={this.handleChange}
+                                value="female"
+                                onBlur={() => this.validator.showMessageFor('gender')}
                             />&nbsp;Female
                         </label>&nbsp;&nbsp;&nbsp;
 
                         <label className="radio-inline">
-                            <input 
-                            type="radio" 
-                            name='gender' 
-                            onChange={this.handleChange} 
-                            value="others" onBlur={() => this.validator.showMessageFor('gender')} 
+                            <input
+                                type="radio"
+                                name='gender'
+                                onChange={this.handleChange}
+                                value="others" onBlur={() => this.validator.showMessageFor('gender')}
                             />&nbsp;Others
-                        </label>                        
+                        </label>
                         <span className='color-red'>{this.validator.message('gender', this.state.gender, 'required')}</span>
-                        
+
                     </div>
 
-                    <Button type='submit' variant='outline-primary' size='md' block>SIGNUP</Button><br />
+                    <Button
+                        type='submit'
+                        variant='outline-primary'
+                        size='md'
+                        className='btn-margin-left-auto'
+                        block
+                    >SIGNUP</Button><br /> <hr /> <br />
 
-                    <span><b>Already have an account?</b></span><br />
+                    <span className='text-center'><b>Already have an account?</b></span><br />
 
                     <Link to='login' className='mb-5 text-decoration-none'>
-                        <Button type='submit' variant='outline-secondary' size='md' block >LOGIN HERE</Button>
+
+                        <Button
+                            type='submit'
+                            variant='outline-secondary'
+                            size='md'
+                            className='btn-margin-left-auto mb-5'
+                            block
+                        >LOGIN HERE</Button>
+
                     </Link>
+
                 </form>
             </div>
 

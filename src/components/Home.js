@@ -34,12 +34,12 @@ function Home({ history }) {
     //             })
     //     })
     // }
-    
-const fetchTrack=()=>{
-    axios.get("/albums")
-    .then(res=>setTrack(res.data))
-}
-    
+
+    const fetchTrack = () => {
+        axios.get("/albums")
+            .then(res => setTrack(res.data))
+    }
+
     // const fetchTrack = () => {
     //     return new Promise((resolve, reject) => {
     //         fetchApi("https://api.spotify.com/v1/me/top/tracks")
@@ -65,8 +65,8 @@ const fetchTrack=()=>{
         //         })
         // })
 
-    axios.get("/artists")
-    .then(res=>setArtist(res.data))
+        axios.get("/artists")
+            .then(res => setArtist(res.data))
     }
 
     function goto(link) {
