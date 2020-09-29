@@ -19,8 +19,6 @@ let playlistData = [
 
 const style = {
   fontSize: 200,
-  paddingTop: "20px",
-  paddingLeft: "20px",
   float: "left",
 };
 
