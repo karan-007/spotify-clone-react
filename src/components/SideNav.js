@@ -36,7 +36,7 @@ function SideNav() {
 
     if (toggle) {
         playListData = playlist.map((list) => {
-            return <Link to={`/playlist/${list.id}`} key={list.id} className="link-style"><NavOption title={list.name} /></Link>
+            return <Link to={`/playlist/${list.id}`} key={list.id} className="link-style"><NavOption title={list.playlist_name} /></Link>
         })
     }
 
