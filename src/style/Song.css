@@ -1,9 +1,14 @@
+.cover-song{
+  display: flex;
+  flex-direction: row;
+}
+
 .song {
   display: flex;
   width: 95%;
   align-items: center;
   transition: 200ms color ease-in;
-  padding: 10px 0;
+  padding: 10px 100px 10px 10px;
   margin-left: 20px;
   color: grey;
 }
@@ -47,4 +52,24 @@
 }
 .song-info span {
   font-size: 0.8em;
+}
+
+.dropDownContent {
+  position: absolute;
+  right: 25px;
+  background-color: black;
+  width: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropDownContent > p {
+  font-size: small;
+  color: white;
+  padding: 5px;
+  margin-bottom: 0px;
+}
+
+.dropDownContent > p:hover {
+  background-color: #282828;
 }

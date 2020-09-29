@@ -94,7 +94,7 @@ function PlayList({ match }) {
         if (type === "artist") {
             playListData =
                 <div className="body-info">
-                    <img src={list.img_url} alt="" />
+                    <img src={list[0].img_url} alt="" />
                     <div className="body-infoText">
                         <strong>Artist</strong>
                         <h2>{list[0].artist_name}</h2>
