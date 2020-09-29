@@ -1,21 +1,15 @@
-import { getTokenFromResponse } from "./spotify";
-
-
-const hash = getTokenFromResponse();
-
-let _token = hash.access_token;
+import axios from './apiConfig/API'
 
 
 let fetchApi = url => new Promise((resolve, reject) => {
-    fetch(url, {
+    axios(url, {
         method: 'GET',
         headers: {
-            "Authorization": `Bearer ${_token}`
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
     })
-        .then(response => response.json())
+        .then(response => response.data)
         .then(data => {
-            // console.log(data);
             resolve(data)
         })
         .catch(err => reject(err))

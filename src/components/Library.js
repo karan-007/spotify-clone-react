@@ -5,18 +5,18 @@ import { withRouter } from 'react-router-dom'
 import Card from './Card';
 
 function Library({ history }) {
-    const [playlist, setplaylist] = useState();
+    const [playlist, setPlaylist] = useState();
     const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
-        fetchApi("https://api.spotify.com/v1/users/xh6w6d5ztzy8f62qjz9yic4nj/playlists")
-            .then(res => {
-                setplaylist(res.items);
-                setToggle(true);
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        fetchApi('/playlists')
+        .then((data) => {
+            setPlaylist(data);
+            setToggle(true)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }, [])
 
     function goto(link) {

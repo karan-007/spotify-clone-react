@@ -33,6 +33,11 @@ function ProfileButton() {
     setMenu(!menu)
 }
 
+const logout = () => {
+  localStorage.clear();
+  window.location.reload();
+}
+
   return (
     <div className="dropdown">
       <Button
@@ -46,7 +51,7 @@ function ProfileButton() {
       <div style={{display:menu?"block":"none"}}>
           <div id="myDropdown" className="dropdown-content">
         <Link to="/profile">Profile</Link>
-        <Link>Logout</Link>
+        <Link onClick={logout}>Logout</Link>
         </div>
     </div>
     </div>

@@ -8,23 +8,22 @@ import '../style/sideNav.css'
 import NavOption from './NavOption'
 import { Link } from 'react-router-dom'
 import fetchApi from '../fetchApi'
-
 function SideNav() {
 
-    const [playlist, setplaylist] = useState();
+    const [playlist, setPlaylist] = useState();
     const [toggle, setToggle] = useState(false);
     const [error, setError] = useState("");
 
     useEffect(() => {
-        fetchApi("https://api.spotify.com/v1/users/xh6w6d5ztzy8f62qjz9yic4nj/playlists")
-            .then(res => {
-                setplaylist(res.items);
-                setToggle(true);
-            })
-            .catch(err => {
-                console.log(err)
-                setError(err);
-            })
+        fetchApi('/playlists')
+        .then((data) => {
+            setPlaylist(data);
+            setToggle(true)
+        })
+        .catch(err => {
+            console.log(err)
+            setError(err);
+        })
     }, [])
 
     let playListData = "loading";
@@ -62,8 +61,8 @@ function SideNav() {
             <br />
             <br />
             <strong className="sideNav-title">PLAYLISTS</strong>
-            <Link className="link-style" to="/createPlaylist"><NavOption Icon={AddBoxIcon} title="Create Playlist"/></Link>
-            <Link className="link-style" to="/playlist/likedSongs"><NavOption Icon={FavoriteBorderIcon} title="Liked Songs"/></Link>
+            <Link className="link-style" to="/createPlaylist"><NavOption Icon={AddBoxIcon} title="Create Playlist" /></Link>
+            <Link className="link-style" to="/playlist/likedSongs"><NavOption Icon={FavoriteBorderIcon} title="Liked Songs" /></Link>
             <hr />
             {playListData}
         </div >
