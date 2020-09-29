@@ -11,7 +11,6 @@ import Library from './components/Library'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PlayList from './components/PlayList';
 import LandingPage from './components/LandingPage'
-import { getTokenFromResponse } from "./spotify";
 import AlbumAndTrack from './components/AlbumAndTrack';
 import { Provider } from 'react-redux'
 import Login from './components/Login'
@@ -22,19 +21,17 @@ import SignUp from './components/SignUp';
 function App() {
 
   const [token, setToken] = useState(false)
-
-
-  // console.log(window.location.href.split('/')[2])
+  
   useEffect(() => {
-    const hash = getTokenFromResponse();
-    let _token = hash.access_token;
-    window.location.hash = "";
+    let _token = localStorage.getItem('token')
 
     if (_token) {
       setToken(true)
     }
   }, []);
+
   let data = "loading"
+
   if (!token) {
     data = <div className="App">
       <Router>

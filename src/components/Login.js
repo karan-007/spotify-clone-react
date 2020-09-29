@@ -34,6 +34,8 @@ class Login extends React.Component {
 
                 response = await response.data;
                 localStorage.setItem('token', response.token)
+                window.location.reload();
+                history.push('/')
 
             }             
             else {

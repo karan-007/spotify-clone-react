@@ -63,9 +63,13 @@ class SignUp extends Component {
                 <form className='flex' onSubmit={this.handleSubmit}>
 
                     <div className='form-group image'>
-                        <img src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Black.png' height='60px' width='200px' />
+                        <img src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Black.png' 
+                        height='60px' 
+                        width='200px'
+                        alt='spotify logo'
+                         />
                     </div>
-
+                    
                     <div className='form-group'>
                         <label><b>What's your name?</b></label>
                         <input

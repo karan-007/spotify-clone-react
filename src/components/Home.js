@@ -16,24 +16,24 @@ function Home({ history }) {
     let showData = "loading"
 
     useEffect(() => {
-        Promise.all([fetchRecent(), fetchTrack(), fetchArtist()])
+        Promise.all([fetchTrack(), fetchArtist()])
             .then((res) => {
                 setDone(true)
             })
     }, [])
 
-    const fetchRecent = () => {
-        return new Promise((resolve, reject) => {
-            fetchApi("https://api.spotify.com/v1/me/player/recently-played")
-                .then(res => {
-                    setRecent(res.items)
-                    resolve("done")
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        })
-    }
+    // const fetchRecent = () => {
+    //     return new Promise((resolve, reject) => {
+    //         fetchApi("https://api.spotify.com/v1/me/player/recently-played")
+    //             .then(res => {
+    //                 setRecent(res.items)
+    //                 resolve("done")
+    //             })
+    //             .catch(err => {
+    //                 console.log(err)
+    //             })
+    //     })
+    // }
     
 const fetchTrack=()=>{
     axios.get("/albums")
