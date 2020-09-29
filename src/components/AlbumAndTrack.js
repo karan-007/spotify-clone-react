@@ -58,9 +58,9 @@ function PlayList({ match }) {
 
         }
         if (type === "album") {
-            let data = await fetchApi(`https://api.spotify.com/v1/albums/${id}`)
-            setplaylist(data.tracks.items)
-            setList(data)
+            let data = await axios.get(`/albums/${id}`)
+            setList(data.data)
+            //setplaylist(data.tracks.items)
             setToggle(true);
 
         }
@@ -74,14 +74,14 @@ function PlayList({ match }) {
             audio.pause();
             dispatch(pause())
             dispatch(songData(data));
-            let songAudio = data.preview_url;
+            let songAudio = data.audio_url;
             songAudio = new Audio(songAudio);
             songAudio.play();
             dispatch(saveAudio(songAudio));
             dispatch(play())
         } else {
             dispatch(songData(data));
-            let songAudio = data.preview_url;
+            let songAudio = data.audio_url;
             let playSong = new Audio(songAudio);
             playSong.play();
             dispatch(saveAudio(playSong))
@@ -132,20 +132,20 @@ function PlayList({ match }) {
         } else {
             playListData =
                 <div className="body-info">
-                    <img src={list.images[0].url} alt="" />
+                    <img src={list[0].img_url} alt="" />
                     <div className="body-infoText">
-                        <strong>{list.type}</strong>
+                        <strong>Album</strong>
                         <h2>{list.name}</h2>
                         <p>{list.label}</p>
                     </div>
                 </div>
-            songs = playlist.map((song) => {
-                return <Song key={song.id}
-                    img={list.images[0].url}
-                    name={song.name}
-                    artists={song.artists}
+            songs = list.map((song) => {
+                return <Song key={song.song_id}
+                    img={song.img_url}
+                    name={song.song_name}
+                    artists={song.artist_name}
                     album={list.name}
-                    duration={song.duration_ms}
+                    duration={song.duration}
                     data={song}
                     play={playSong} />
             })

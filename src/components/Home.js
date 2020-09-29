@@ -36,30 +36,8 @@ function Home({ history }) {
     axios.get("/albums").then((res) => setTrack(res.data));
   };
 
-  // const fetchTrack = () => {
-  //     return new Promise((resolve, reject) => {
-  //         fetchApi("https://api.spotify.com/v1/me/top/tracks")
-  //             .then(res => {
-  //                 setTrack(res.items)
-  //                 resolve("done")
-  //             })
-  //             .catch(err => {
-  //                 console.log(err)
-  //             })
-  //     })
-  // }
 
   const fetchArtist = () => {
-    // return new Promise((resolve, reject) => {
-    //     fetchApi("https://api.spotify.com/v1/me/top/artists")
-    //         .then(res => {
-    //             setArtist(res.items)
-    //             resolve("done")
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // })
     axios.get("/artists").then((res) => setArtist(res.data));
   };
 
@@ -80,7 +58,7 @@ function Home({ history }) {
             {topTrack.slice(0, 5).map((song) => {
               // console.log(song)
               // return <Card onClick={() => goto(`/track/${song.id}`)} key={song.id} name={song.name} artist={song.artists} img={song.album.images[0].url} />
-              return <Card key={song.id} name={song.name} img={song.img_url} />;
+              return <Card onClick={() => goto(`/Album/${song.id}`)} key={song.id} name={song.name} img={song.img_url} />;
             })}
           </div>
         </div>
