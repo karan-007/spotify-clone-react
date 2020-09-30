@@ -55,12 +55,11 @@ function SideNav() {
       },
       url: "/playlists/add",
       data: { playlistName },
-    }).then((data) => console.log(data));
+    })
+      .then((data) => console.log(data))
+      .then(() => setModalShow(false));
 
-    setModalShow(false)
-  
-    alert("platlist created!")
-    
+    alert("platlist created!");
   }
 
   const handleChange = (e) => {
@@ -77,11 +76,15 @@ function SideNav() {
         centered
         closebutton
       >
-        <Modal.Header 
-        className="modalContainer" >
-          <Modal.Title className="myModal" id="contained-modal-title-vcenter" >
+        <Modal.Header className="modalContainer">
+          <Modal.Title className="myModal" id="contained-modal-title-vcenter">
             Create Playlist
-            <input type="text" className="form-control textField1" value={playlist} onBlur={handleChange}/>
+            <input
+              type="text"
+              className="form-control textField1"
+              value={playlist}
+              onBlur={handleChange}
+            />
             <h4 onClick={handleClick} className="create-btn">
               Create
             </h4>
