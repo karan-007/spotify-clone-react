@@ -52,8 +52,6 @@ function PlayList({ match }) {
             setList(data.data)
             console.log(data.data)
             //setList(data)
-            //let tracks = await fetchApi(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=IN`)
-            //setplaylist(tracks.tracks)
             setToggle(true);
 
         }

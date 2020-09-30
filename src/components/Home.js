@@ -44,7 +44,6 @@ function Home({ history }) {
           <div className="cardList">
             {topTrack.slice(0, 5).map((song) => {
               // console.log(song)
-              // return <Card onClick={() => goto(`/track/${song.id}`)} key={song.id} name={song.name} artist={song.artists} img={song.album.images[0].url} />
               return <Card onClick={() => goto(`/Album/${song.id}`)} key={song.id} name={song.name} img={song.img_url} />;
             })}
           </div>
@@ -54,7 +53,6 @@ function Home({ history }) {
           <div className="cardList">
             {topArtist.slice(0, 5).map((artist) => {
               // console.log(artist)
-              //return <Card onClick={() => goto(`/Artist/${artist.id}`)} key={artist.id} name={artist.name} data="Artist" img={artist.images[0].url} />
               return (
                 <Card onClick={() => goto(`/Artist/${artist.id}`)} key={artist.id} name={artist.name} img={artist.img_url} />
               );

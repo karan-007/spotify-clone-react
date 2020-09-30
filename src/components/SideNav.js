@@ -55,7 +55,9 @@ function SideNav() {
       },
       url: "/playlists/add",
       data: { playlistName },
-    }).then((data) => console.log(data)).then(()=>setModalShow(false));
+    }).then((data) => console.log(data));
+
+    setModalShow(false)
   
     alert("platlist created!")
     
@@ -73,10 +75,11 @@ function SideNav() {
         className="modalTop"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        closebutton
       >
         <Modal.Header 
-        className="modalContainer">
-          <Modal.Title className="myModal" id="contained-modal-title-vcenter">
+        className="modalContainer" >
+          <Modal.Title className="myModal" id="contained-modal-title-vcenter" >
             Create Playlist
             <input type="text" className="form-control textField1" value={playlist} onBlur={handleChange}/>
             <h4 onClick={handleClick} className="create-btn">
