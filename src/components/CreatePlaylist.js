@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import "../style/createPlaylist.css";
 import Playlist from './PlayList'
 import { FullscreenExit } from "@material-ui/icons";
-import axios from '../apiConfig/API';
 import { postApiWithAuth } from '../postApi'
 
 
