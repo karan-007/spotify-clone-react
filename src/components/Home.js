@@ -19,19 +19,6 @@ function Home({ history }) {
     });
   }, []);
 
-//   const fetchRecent = () => {
-//     return new Promise((resolve, reject) => {
-//       fetchApi("https://api.spotify.com/v1/me/player/recently-played")
-//         .then((res) => {
-//           setRecent(res.items);
-//           resolve("done");
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         });
-//     });
-//   };
-
   const fetchTrack = () => {
     axios.get("/albums").then((res) => setTrack(res.data));
   };
@@ -75,7 +62,7 @@ function Home({ history }) {
           </div>
         </div>
         <div className="cardDiv">
-          <h1>Recently Played</h1>
+          <h1>Playlists</h1>
           <div className="cardList">
             {recentList.slice(0, 5).map((song) => {
               // console.log(song)

@@ -47,14 +47,11 @@ function CreatePlaylist() {
         <h1>Create new playlist</h1>
 
         <form className={classes.root} noValidate autoComplete="off">
-          {/* <TextField className="textField" id="standard-basic" size="normal" /> */}
 
           <input className="textField" type="text" value={playlistName} onChange={handleChange} />
           <h4 onClick={handleClick} className="create-btn">Create</h4>
         </form>
       </div>
-      <h4 style={{ marginTop: '30px 0' }}>Playlists</h4>
-      {/* <Playlist/> */}
     </div>
   );
 }

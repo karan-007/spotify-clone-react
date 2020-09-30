@@ -33,3 +33,54 @@ hr {
 .sideNav-playList {
   color: grey;
 }
+
+.modalTop {
+  border-radius: 20px;
+}
+
+.modalContainer {
+  padding: 0 !important;
+}
+
+.myModal{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: gray;
+  flex:1;
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.create-btn {
+  margin-top: 10px;
+  padding: 5px;
+  color: white;
+  width: 200px;
+  border-radius: 99px;
+  font-weight: 800;
+  background-color: #1db954;
+  text-align: center;
+  cursor: pointer;
+}
+
+.textField1 {
+  margin: 10px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 40px;
+  color: white;
+  padding :10px 0;
+  background-color:#282828;
+  border-radius: 5px;
+  border: none;
+  border-style: none;
+}
+
+
+.create-btn:hover {
+  color: white;
+  background-color: #1aa34a;
+}
+
