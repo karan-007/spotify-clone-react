@@ -42,8 +42,8 @@ function PlayList({ match }) {
 
     async function fetchData(id, type) {
         if (type === "track") {
-            let data = await fetchApi(`https://api.spotify.com/v1/tracks/${id}`)
-            setplaylist(data)
+            // let data = await fetchApi(`https://api.spotify.com/v1/tracks/${id}`)
+            // setplaylist(data)
             setToggle(true);
 
         }
