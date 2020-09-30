@@ -42,15 +42,16 @@ function PlayList({ match }) {
 
     async function fetchData(id, type) {
         if (type === "track") {
-            let data = await fetchApi(`https://api.spotify.com/v1/tracks/${id}`)
-            setplaylist(data)
+            // let data = await fetchApi(`https://api.spotify.com/v1/tracks/${id}`)
+            // setplaylist(data)
             setToggle(true);
 
         }
         if (type === "artist") {
-            let data = await axios.get(`/artists/${id}`)
-            setList(data.data)
-            console.log(data.data)
+            // let data = await axios.get(`/artists/${id}`)
+            let data = await fetchApi(`/artists/${id}`)
+            setList(data)
+            console.log(data)
             //setList(data)
             //let tracks = await fetchApi(`https://api.spotify.com/v1/artists/${id}/top-tracks?country=IN`)
             //setplaylist(tracks.tracks)
@@ -58,8 +59,8 @@ function PlayList({ match }) {
 
         }
         if (type === "album") {
-            let data = await axios.get(`/albums/${id}`)
-            setList(data.data)
+            let data = await fetchApi(`/albums/${id}`)
+            setList(data)
             //setplaylist(data.tracks.items)
             setToggle(true);
 

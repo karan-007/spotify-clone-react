@@ -21,10 +21,10 @@ function App() {
 
   const token = localStorage.getItem('token');
 
-  const [isLoggedIn, setLoggedIn] = useState(token? true : false)
+  const [isLoggedIn, setLoggedIn] = useState(token? true : false);
 
   const handleLoggedIn = () => {    
-    setLoggedIn(true)
+    setLoggedIn(!isLoggedIn)
   }
 
   let data = "loading"
@@ -44,7 +44,7 @@ function App() {
     data = <Provider store={store}>
       <Router>
         <div className="App">
-          <ProfileButton />
+          <ProfileButton handleLoggedIn={handleLoggedIn} />
           <div className="upper-body">
             <SideNav />
             <Switch>

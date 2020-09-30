@@ -1,8 +1,9 @@
 import React from 'react';
-import axios from '../apiConfig/API';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SimpleReactValidator from 'simple-react-validator';
+import { postApi } from '../postApi';
+
 
 class Login extends React.Component {
     constructor(props) {
@@ -26,13 +27,8 @@ class Login extends React.Component {
 
         try {
             if (this.validator.allValid()) {
-                let response = await axios({
-                    method: 'post',
-                    url: '/login',
-                    data: this.state
-                })
+                let response = await postApi('/login',this.state);
 
-                response = await response.data;
                 localStorage.setItem('token', response.token)
                 this.props.history.push('/')
                 this.props.handleLoggedIn()
@@ -43,7 +39,7 @@ class Login extends React.Component {
             }
         }
         catch (err) {
-            window.alert(err);
+            window.alert(err.response.data.msg);
             console.log(err)
         }
 

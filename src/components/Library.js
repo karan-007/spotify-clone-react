@@ -10,13 +10,13 @@ function Library({ history }) {
 
     useEffect(() => {
         fetchApi('/playlists')
-        .then((data) => {
-            setPlaylist(data);
-            setToggle(true)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            .then((data) => {
+                setPlaylist(data);
+                setToggle(true)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
 
     function goto(link) {
@@ -31,7 +31,12 @@ function Library({ history }) {
                 <h1>Your Library</h1>
                 <div className="cardlist">
                     {playlist.map((list) => {
-                        return <Card onClick={() => goto(`/playlist/${list.id}`)} className="list-card" key={list.id} img={list.images[0].url} name={list.name} data={list.owner.display_name} />
+                        return <Card
+                            onClick={() => goto(`/playlist/${list.playlist_id}`)}
+                            className="list-card" key={list.playlist_id}
+                            img={list.img_url.length === 0 ? 'https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/No_circle.svg/1024px-No_circle.svg.png' : list.img_url}
+                            name={list.playlist_name}
+                        />
                     })}
                 </div>
             </div>
