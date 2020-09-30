@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from '../apiConfig/API';
 import SimpleReactValidator from 'simple-react-validator';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { postApi } from '../postApi';
 
 
 class SignUp extends Component {
@@ -32,12 +32,7 @@ class SignUp extends Component {
 
         try {
             if (this.validator.allValid()) {
-                // eslint-disable-next-line
-                const response = await axios({
-                    method: 'post',
-                    url: '/signup',
-                    data: this.state
-                });
+                await postApi('/signup',this.state);
 
                 const confirm = window.confirm('Signed up successfully, press ok to login');
                 // eslint-disable-next-line
@@ -54,7 +49,7 @@ class SignUp extends Component {
                 window.alert(err.response.data.msg);
             }
             else {
-                console.log(err.response)
+                console.log(err)
             }
         }
 

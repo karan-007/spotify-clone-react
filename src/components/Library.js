@@ -31,7 +31,7 @@ function Library({ history }) {
                 <h1>Your Library</h1>
                 <div className="cardlist">
                     {playlist.map((list) => {
-                        return <Card onClick={() => goto(`/playlist/${list.id}`)} className="list-card" key={list.id} img={list.images[0].url} name={list.name} data={list.owner.display_name} />
+                        return <Card onClick={() => goto(`/playlist/${list.playlist_id}`)} className="list-card" key={list.playlist_id}  name={list.playlist_name}  />
                     })}
                 </div>
             </div>
