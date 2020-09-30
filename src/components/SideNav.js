@@ -62,9 +62,14 @@ function SideNav() {
     alert("platlist created!");
   }
 
-  const handleChange = (e) => {
-    setPlaylistName(e.target.value);
-  };
+  function handleChange(){
+}
+
+    if (toggle) {
+        playListData = playlist.map((list) => {
+            return <Link to={`/playlist/${list.playlist_id}`} key={list.playlist_id} className="link-style"><NavOption title={list.playlist_name} /></Link>
+        })
+    }
 
   function MyVerticallyCenteredModal(props) {
     return (

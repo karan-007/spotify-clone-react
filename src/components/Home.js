@@ -20,12 +20,12 @@ function Home({ history }) {
   }, []);
 
   const fetchTrack = () => {
-    axios.get("/albums").then((res) => setTrack(res.data));
+    fetchApi("/albums").then((res) => setTrack(res));
   };
 
 
   const fetchArtist = () => {
-    axios.get("/artists").then((res) => setArtist(res.data));
+    fetchApi("/artists").then((res) => setArtist(res));
   };
 
   function goto(link) {

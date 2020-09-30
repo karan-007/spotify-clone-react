@@ -44,9 +44,9 @@ function PlayList({ match }) {
     // console.log(type)
 
     async function fetchData(id) {
-        let data = await fetchApi(`https://api.spotify.com/v1/playlists/${id}`)
-        setplaylist(data.tracks.items)
-        setList(data)
+        // let data = await fetchApi(`https://api.spotify.com/v1/playlists/${id}`)
+        // setplaylist(data.tracks.items)
+        // setList(data)
         setToggle(true);
     }
 

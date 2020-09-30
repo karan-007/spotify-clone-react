@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import "../style/createPlaylist.css";
 import Playlist from "./PlayList";
 import { FullscreenExit } from "@material-ui/icons";
-import axios from "../apiConfig/API";
+import { postApiWithAuth } from '../postApi'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,18 +23,24 @@ function CreatePlaylist() {
     setPlaylistName(e.target.value);
   };
 
-  const handleClick = () => {
-    axios({
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      url: "/playlists/add",
-      data: { playlistName },
-    }).then((data) => console.log(data));
+  const handleClick = async () => {
+
+    try {
+      let data = await postApiWithAuth('/playlists/add',{playlistName});
+      console.log(data);
+      alert(data.msg);
+      setPlaylistName('');
+    }
+
+    catch(err){
+      console.log(err);
+      throw err;
+    }
 
     alert("playlist created!");
-  };
+  }
+
+
 
   const classes = useStyles();
   return (
