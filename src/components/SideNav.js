@@ -10,9 +10,10 @@ import { Link } from "react-router-dom";
 import fetchApi from "../fetchApi";
 import { Button, Modal } from "react-bootstrap";
 import axios from "../apiConfig/API";
+import {postApiWithAuth} from '../postApi'
 
 function SideNav() {
-  const [playlist, setPlaylist] = useState();
+  const [playlist, setPlaylist] = useState("");
   const [toggle, setToggle] = useState(false);
   const [error, setError] = useState("");
   const [modalShow, setModalShow] = useState(false);
@@ -40,7 +41,7 @@ function SideNav() {
   if (toggle) {
     playListData = playlist.map((list) => {
       return (
-        <Link to={`/playlist/${list.id}`} key={list.id} className="link-style">
+        <Link to={`/playlist/${list.playlist_id}`} key={list.playlist_id} className="link-style">
           <NavOption title={list.playlist_name} />
         </Link>
       );
@@ -48,28 +49,25 @@ function SideNav() {
   }
 
   function handleClick() {
-    axios({
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      url: "/playlists/add",
-      data: { playlistName },
-    })
+    postApiWithAuth("/playlists/add",{playlistName})
+    // axios({
+    //   method: "POST",
+    //   headers: {
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //   },
+    //   url: "/playlists/add",
+    //   data: { playlistName },
+    // })
       .then((data) => console.log(data))
       .then(() => setModalShow(false));
 
     alert("platlist created!");
   }
 
-  function handleChange(){
+  function handleChange(e){
+    console.log(e.target.value)
+    setPlaylistName(e.target.value)
 }
-
-    if (toggle) {
-        playListData = playlist.map((list) => {
-            return <Link to={`/playlist/${list.playlist_id}`} key={list.playlist_id} className="link-style"><NavOption title={list.playlist_name} /></Link>
-        })
-    }
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -79,16 +77,14 @@ function SideNav() {
         className="modalTop"
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        closebutton
       >
         <Modal.Header className="modalContainer">
           <Modal.Title className="myModal" id="contained-modal-title-vcenter">
             Create Playlist
             <input
               type="text"
-              className="form-control textField1"
-              value={playlist}
-              onBlur={handleChange}
+              className="textField1"
+              onChange={handleChange}
             />
             <h4 onClick={handleClick} className="create-btn">
               Create

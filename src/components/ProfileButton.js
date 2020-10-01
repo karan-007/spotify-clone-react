@@ -29,10 +29,6 @@ function ProfileButton({ handleLoggedIn, history }) {
 
   const classes = useStyles();
 
-  function handleClick() {
-    setMenu(!menu)
-  }
-
   function goto(link) {
     history.push(link)
   }
@@ -47,7 +43,7 @@ function ProfileButton({ handleLoggedIn, history }) {
   return (
     <div className="dropdown">
       <Button
-        onClick={handleClick}
+        onMouseOver={()=>setMenu(!menu)}
         variant="contained"
         className={classes.button}
         startIcon={<AccountCircleIcon />}

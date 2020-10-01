@@ -44,8 +44,9 @@ function PlayList({ match }) {
     // console.log(type)
 
     async function fetchData(id) {
-        // let data = await fetchApi(`https://api.spotify.com/v1/playlists/${id}`)
-        // setplaylist(data.tracks.items)
+         let data = await fetchApi(`/playlists/${id}`)
+         console.log(data)
+        setplaylist(data)
         // setList(data)
         setToggle(true);
     }
@@ -58,15 +59,15 @@ function PlayList({ match }) {
         if (playing) {
             audio.pause();
             dispatch(pause())
-            dispatch(songData(data.track));
-            let songAudio = data.track.preview_url;
+            dispatch(songData(data));
+            let songAudio = data.audio_url;
             songAudio = new Audio(songAudio);
             songAudio.play();
             dispatch(saveAudio(songAudio));
             dispatch(play())
         } else {
-            dispatch(songData(data.track));
-            let songAudio = data.track.preview_url;
+            dispatch(songData(data));
+            let songAudio = data.audio_url;
             let playSong = new Audio(songAudio);
             playSong.play();
             dispatch(saveAudio(playSong))
@@ -79,7 +80,7 @@ function PlayList({ match }) {
 
         playListData =
             <div className="body-info">
-                <img src={list.images[0].url} alt="" />
+                <img src={list.img_url} alt="" />
                 <div className="body-infoText">
                     <strong>{list.type}</strong>
                     <h2>{list.name}</h2>
@@ -87,12 +88,12 @@ function PlayList({ match }) {
                 </div>
             </div>
         songs = playlist.map((song) => {
-            return <Song key={song.track.id}
-                img={song.track.album.images[0].url}
-                name={song.track.name}
-                artists={song.track.artists}
-                album={song.track.album.name}
-                duration={song.track.duration_ms}
+            return <Song key={song.song_id}
+                img={song.img_url}
+                name={song.song_name}
+                artists={song.artist_name}
+                // album={song.track.album.name}
+                duration={song.duration}
                 data={song}
                 play={playSong} />
         })

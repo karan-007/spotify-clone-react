@@ -1,9 +1,13 @@
 .body {
   flex: 0.82;
+  color:white;
   background-color: #121212;
   height: 85vh;
   overflow-y: overlay;
-  overflow-x: hidden;}
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
 
 .body::-webkit-scrollbar {
   display: none;
