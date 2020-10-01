@@ -45,56 +45,6 @@ function SideNav() {
     });
   }
 
-<<<<<<< HEAD
-  function handleClick() {
-    postApiWithAuth("/playlists/add",{playlistName})
-    // axios({
-    //   method: "POST",
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    //   url: "/playlists/add",
-    //   data: { playlistName },
-    // })
-      .then((data) => console.log(data))
-      .then(() => setModalShow(false));
-
-    alert("platlist created!");
-  }
-
-  function handleChange(e){
-    console.log(e.target.value)
-    setPlaylistName(e.target.value)
-}
-
-  function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="md"
-        className="modalTop"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header className="modalContainer">
-          <Modal.Title className="myModal" id="contained-modal-title-vcenter">
-            Create Playlist
-            <input
-              type="text"
-              className="textField1"
-              onBlur={handleChange}
-            />
-            <h4 onClick={handleClick} className="create-btn">
-              Create
-            </h4>
-          </Modal.Title>
-        </Modal.Header>
-      </Modal>
-    );
-  }
-
-=======
->>>>>>> 9823e882538f2f1b238422dc04bc9942475cfdbb
   return (
     <div className="sideNav">
       <Link to="/">
