@@ -4,6 +4,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import "../style/Footer.css";
+import {} from '../postApi'
 
 import { play, pause } from "../store/index";
 
@@ -23,7 +24,15 @@ function Footer() {
 
   function handleClick() {
     setLike(!like);
+    // if(like){
+
+    // }else{
+    //   postApiWithAuth('/liked/add',{user_id:,song_id:item.song_id})
+      
+    // }
+  
   }
+
 
   const playSong = () => {
     if (!playing) {

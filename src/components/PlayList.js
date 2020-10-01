@@ -38,13 +38,16 @@ function PlayList({ match }) {
         }
     }, [id])
 
+console.log(id)
 
 
-
-    // console.log(type)
-
+    // 
     async function fetchData(id) {
-         let data = await fetchApi(`/playlists/${id}`)
+        if (id=="likedSongs"){
+            var data = await fetchApi(`/playlists/liked`)
+        }else{
+            var data = await fetchApi(`/playlists/${id}`)
+        }
          console.log(data)
         setplaylist(data)
         // setList(data)
