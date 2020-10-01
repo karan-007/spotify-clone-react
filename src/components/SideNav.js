@@ -8,16 +8,13 @@ import "../style/sideNav.css";
 import NavOption from "./NavOption";
 import { Link } from "react-router-dom";
 import fetchApi from "../fetchApi";
-import { Button, Modal } from "react-bootstrap";
-import axios from "../apiConfig/API";
-import {postApiWithAuth} from '../postApi'
+import CreatePlayList from './CreatePlaylist'
 
 function SideNav() {
   const [playlist, setPlaylist] = useState("");
   const [toggle, setToggle] = useState(false);
   const [error, setError] = useState("");
   const [modalShow, setModalShow] = useState(false);
-  const [playlistName, setPlaylistName] = useState("");
 
   useEffect(() => {
     fetchApi("/playlists")
@@ -48,6 +45,7 @@ function SideNav() {
     });
   }
 
+<<<<<<< HEAD
   function handleClick() {
     postApiWithAuth("/playlists/add",{playlistName})
     // axios({
@@ -95,6 +93,8 @@ function SideNav() {
     );
   }
 
+=======
+>>>>>>> 9823e882538f2f1b238422dc04bc9942475cfdbb
   return (
     <div className="sideNav">
       <Link to="/">
@@ -104,28 +104,36 @@ function SideNav() {
           alt=""
         />
       </Link>
+
       <Link className="link-style" to="/">
         <NavOption Icon={HomeIcon} title="Home" />
       </Link>
+
       <Link className="link-style" to="/search">
         <NavOption Icon={SearchIcon} title="Search" />
       </Link>
+
       <Link className="link-style" to="/library">
         <NavOption Icon={LibraryMusicIcon} title="Your Library" />
       </Link>
+
       <br />
       <br />
       <strong className="sideNav-title">PLAYLISTS</strong>
+
       <Link className="link-style" onClick={() => setModalShow(true)}>
         <NavOption Icon={AddBoxIcon} title="Create Playlist" />
       </Link>
-      <MyVerticallyCenteredModal
+
+      <CreatePlayList
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
+
       <Link className="link-style" to="/playlist/likedSongs">
         <NavOption Icon={FavoriteBorderIcon} title="Liked Songs" />
       </Link>
+      
       <hr />
       {playListData}
     </div>
