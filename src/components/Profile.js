@@ -79,8 +79,7 @@ function Profile() {
 
     </div>
   ) : null;
-
-
+  
   return (
     <div className="body">
       {renderCover}

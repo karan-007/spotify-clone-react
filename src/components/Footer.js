@@ -1,15 +1,37 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import "../style/Footer.css";
 import {} from '../postApi'
-
+import fetchApi from '../fetchApi'
+import {postApiWithAuth} from '../postApi'
 import { play, pause } from "../store/index";
 
 function Footer() {
   const [like, setLike] = useState(false);
+  const [data,setUserData]=useState('')
+
+  // fetchApi('/user/profile')
+  //   .then((data) => {
+  //     setUserData(data);
+  //     console.log(data)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+
+  useEffect(() => {
+    fetchApi('/user/profile')
+      .then((data) => {
+        setUserData(data);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
+
 
   const dispatch = useDispatch();
 
@@ -24,12 +46,11 @@ function Footer() {
 
   function handleClick() {
     setLike(!like);
-    // if(like){
+    if(like){
 
-    // }else{
-    //   postApiWithAuth('/liked/add',{user_id:,song_id:item.song_id})
-      
-    // }
+    }else{
+      postApiWithAuth('/liked/add',{user_id:data[0].username,song_id:item.song_id})
+    }
   
   }
 
