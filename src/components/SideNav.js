@@ -84,7 +84,7 @@ function SideNav() {
             <input
               type="text"
               className="textField1"
-              onChange={handleChange}
+              onBlur={handleChange}
             />
             <h4 onClick={handleClick} className="create-btn">
               Create
