@@ -5,7 +5,7 @@ import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import fetchApi from "../fetchApi";
 import { postApiWithAuth } from "../postApi";
-import axios from 'axios'
+import axios from '../apiConfig/API'
 
 import "../style/Song.css";
 
@@ -40,7 +40,7 @@ function Song({ img, name, artists, album, duration, data, play }) {
 
   function removeFromPlaylist(pid, sid) {
     axios
-      .delete("/delete/playlist/song", {
+      .delete("delete/playlist/song", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

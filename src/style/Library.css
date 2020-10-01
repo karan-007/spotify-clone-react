@@ -9,6 +9,18 @@
   /* justify-content: space-around; */
 }
 
+.delete{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: black;
+}
+
+.delete:hover{
+  color: gray;
+}
+
+
 .playlist-cards {
   width: 95%;
   margin: 0 auto;

@@ -7,7 +7,7 @@ import "../style/Footer.css";
 import fetchApi from '../fetchApi'
 import {postApiWithAuth} from '../postApi'
 import { play, pause } from "../store/index";
-import axios from 'axios'
+import axios from '../apiConfig/API'
 
 function Footer() {
   const [like, setLike] = useState(false);
