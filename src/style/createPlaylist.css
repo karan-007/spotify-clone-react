@@ -1,17 +1,17 @@
-.body {
-  margin: 0;
-  padding: 0;
-  color: white;
-  padding: 20px;
-}
+
 
 .create {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+  color: white;
+  background-color: #282828;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .textField {
+  margin: 10px;
   font-size: 1rem;
   font-weight: bold;
   height: 40px;
@@ -22,19 +22,22 @@
   border-style: none;
 }
 
-.create-btn {
+.create-btn1 {
+  margin: 10px;
   padding: 5px;
   color: white;
-  width: 200px;
+  width: 100px;
   border-radius: 99px;
   font-weight: 800;
-  background-color: #1db954;
+  background-color: #1db954 !important;
   text-align: center;
   cursor: pointer;
+  border: none;
+  border-style: none;
 }
 
 
-.create-btn:hover {
+.create-btn1:hover {
   color: white;
   background-color: #1aa34a;
 }

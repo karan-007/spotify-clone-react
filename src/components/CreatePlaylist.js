@@ -1,6 +1,7 @@
 import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { postApiWithAuth } from '../postApi'
+import '../style/createPlaylist.css'
 
 class CreatePlayList extends React.Component {
     constructor(props) {
@@ -38,24 +39,22 @@ class CreatePlayList extends React.Component {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header closeButton>Add Playlist</Modal.Header>
 
-                <div className='m-auto w-50'>
-                    <label><b>Playlist Name:</b></label>
+               <div className="create">
+                    <h3><b>Create playlist</b></h3>
                     <input
+                    className="textField"
                         type='text'
                         onChange={this.handleChange}
-                        className="form-control"
                         value={this.state.playlistName}
                         required
                     />
-                </div><br />
-
-                <Modal.Footer>
-                    <Button onClick={this.props.onHide} variant='secondary'>Close</Button>
-                    <Button type='submit' variant='primary' onClick={this.handleSubmit}>Create</Button>
-                </Modal.Footer>
-
+                    <div>
+                      <button className="create-btn1" onClick={this.props.onHide} >Close</button>
+                    <button className="create-btn1" type='submit'  onClick={this.handleSubmit}>Add</button>
+               </div>
+               </div>
+                
             </Modal>
         )
     }
