@@ -40,17 +40,17 @@ function PlayList({ match }) {
 
     
 
-console.log(id)
+//console.log(id)
 
 
-    // 
+
     async function fetchData(id) {
         if (id=="likedSongs"){
             var data = await fetchApi(`/playlists/liked`)
         }else{
             var data = await fetchApi(`/playlists/${id}`)
         }
-         console.log(data)
+        // console.log(data)
         setplaylist(data)
         // setList(data)
         setToggle(true);
@@ -85,7 +85,7 @@ console.log(id)
 
         playListData =
             <div className="body-info">
-                <img src={list.img_url} alt="" />
+                <img src={playlist.img_url} alt="" />
                 <div className="body-infoText">
                     <strong>{list.type}</strong>
                     <h2>{list.name}</h2>

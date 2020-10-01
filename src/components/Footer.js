@@ -4,10 +4,10 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import "../style/Footer.css";
-import {} from '../postApi'
 import fetchApi from '../fetchApi'
 import {postApiWithAuth} from '../postApi'
 import { play, pause } from "../store/index";
+import axios from 'axios'
 
 function Footer() {
   const [like, setLike] = useState(false);
@@ -47,11 +47,18 @@ function Footer() {
   function handleClick() {
     setLike(!like);
     if(like){
-
+      axios.delete('/liked', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        data: {
+          user_id:data[0].username,
+          song_id:item.song_id
+        }
+      });
     }else{
-      postApiWithAuth('/liked/add',{user_id:data[0].username,song_id:item.song_id})
+      postApiWithAuth('/liked/add',{user_id:data[0].username,song_id:item.song_id}).then(alert("liked")).catch(err=>console.log(err))
     }
-  
   }
 
 
