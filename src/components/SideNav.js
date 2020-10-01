@@ -28,7 +28,7 @@ function SideNav() {
       });
   }, []);
 
-  let playListData = "loading";
+  let playListData = "Loading...";
   let errorData = "";
 
   if (error) {

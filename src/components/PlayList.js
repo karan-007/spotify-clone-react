@@ -25,8 +25,8 @@ function PlayList({ match }) {
     const dispatch = useDispatch();
 
 
-    let playListData = "loading";
-    let songs = "loading";
+    let playListData = "Loading...";
+    let songs = "Loading...";
     const mounted = useRef();
     let id = match.params.id;
     useEffect(() => {
@@ -87,9 +87,8 @@ function PlayList({ match }) {
             <div className="body-info">
                 <img src={playlist.img_url} alt="" />
                 <div className="body-infoText">
-                    <strong>{list.type}</strong>
-                    <h2>{list.name}</h2>
-                    <p>{list.description}</p>
+                    <strong>Playlist</strong>
+                    <h2></h2>
                 </div>
             </div>
         songs = playlist.map((song) => {

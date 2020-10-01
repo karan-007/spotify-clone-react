@@ -5,13 +5,15 @@ import "../style/Profile.css";
 import { postApiWithAuth } from '../postApi'
 import fetchApi from '../fetchApi'
 import { Button } from 'react-bootstrap'
+import axios from '../apiConfig/API'
+import { withRouter } from "react-router-dom";
 
 const style = {
   fontSize: 200,
   float: "left",
 };
 
-function Profile() {
+function Profile({history,handleLoggedIn}) {
 
   const [imageData, setImageData] = useState();
   const [userData, setUserData] = useState('');
@@ -46,6 +48,29 @@ function Profile() {
         .catch(err => console.log(err))
     }
   }
+  
+  function goto(link) {
+    history.push(link)
+  }
+
+
+  function handleDelete(){
+
+    const confirm=window.confirm("are you sure?")
+if(confirm){
+  axios
+    .delete("delete/user", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+    .then(alert("user deleted"))
+    .then(()=>{localStorage.clear()
+      goto('/')
+      handleLoggedIn();})
+    .catch((err) => console.log(err));
+}
+  }
 
 
   const imagedata = (fetchedData && userData && userData[0].img_url !== '') ? (
@@ -76,6 +101,8 @@ function Profile() {
       <h2>User Details</h2>
       <span>Name:</span> <p>{userData[0].name}</p>
       <span>Username:</span> <p>{userData[0].username}</p>
+      <span>E-mail:</span> <p>{userData[0].email}</p>
+      <button onClick={handleDelete}>delete</button>
 
     </div>
   ) : null;
@@ -88,4 +115,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default withRouter(Profile);

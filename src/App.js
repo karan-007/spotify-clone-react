@@ -48,7 +48,9 @@ function App() {
             <SideNav />
             <Switch>
               <Route path='/' exact component={Home} />
-              <Route path="/profile" component={Profile} />
+              <Route path="/profile">
+              <Profile handleLoggedIn={handleLoggedIn}/>
+              </Route>
               <Route path="/search" component={Search} />
               <Route path="/library" exact component={Library} />
               <Route path="/playlist/:id" component={PlayList} />
