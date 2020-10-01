@@ -47,12 +47,9 @@ function Footer() {
   function handleClick() {
     setLike(!like);
     if(like){
-      axios.delete('/liked', {
+      axios.delete(`/liked/${item.song_id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
-        },
-        data: {
-          songId:item.song_id
         }
       });
     }else{

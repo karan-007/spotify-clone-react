@@ -40,13 +40,9 @@ function Song({ img, name, artists, album, duration, data, play }) {
 
   function removeFromPlaylist(pid, sid) {
     axios
-      .delete("delete/playlist/song", {
+      .delete(`delete/playlist/song/${pid}/${sid}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        data: {
-          playlistId: pid,
-          songId: sid,
         },
       })
       .then(alert("removed"))

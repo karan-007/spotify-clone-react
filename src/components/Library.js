@@ -32,12 +32,9 @@ function Library({ history }) {
     function handleClick(pid){
         console.log(typeof pid)
         axios
-        .delete("delete/playlist", {
+        .delete(`delete/playlist/${pid}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("token")}`,
-          },
-          data: {
-            playlistId: pid
           },
         })
         .then(alert("playlist deleted"))
