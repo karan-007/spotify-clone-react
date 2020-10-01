@@ -5,12 +5,12 @@ import PlayCircleFilledRoundedIcon from '@material-ui/icons/PlayCircleFilledRoun
 function Card({ name, data, img, icon, artist, onClick }) {
     // {Icon ? <h4>{title}</h4> : <p>{title}</p>}
     return (
-        <div className="card-alpha" onClick={onClick}>
+        <div className="card-alpha">
             <div className="card-data">
                 <div className="card-icon">
                     <PlayCircleFilledRoundedIcon fontSize="large" />
                 </div>
-                <img src={img} alt="img" />
+                <img src={img} alt="img"   onClick={onClick}/>
                 <div className="cardInfo">
                     <h6>{name}</h6>
                     {artist ?
