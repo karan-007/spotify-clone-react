@@ -52,12 +52,11 @@ function Footer() {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         },
         data: {
-          user_id:data[0].id,
-          song_id:item.song_id
+          songId:item.song_id
         }
       });
     }else{
-      postApiWithAuth('/liked/add',{user_id:data[0].id,song_id:item.song_id}).then(alert("liked")).catch(err=>console.log(err))
+      postApiWithAuth('/liked/add',{songId:item.song_id}).then(alert("liked")).catch(err=>console.log(err))
     }
   }
 
