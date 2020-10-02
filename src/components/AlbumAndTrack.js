@@ -20,8 +20,8 @@ function PlayList({ match }) {
   const dispatch = useDispatch();
 
   let type = match.path.split("/")[1];
-  let playListData = "loading";
-  let songs = "loading";
+  let playListData = "Loading...";
+  let songs = "Loading...";
   const mounted = useRef();
   let id = match.params.id;
   useEffect(() => {
