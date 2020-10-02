@@ -9,8 +9,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     position: 'absolute',
     top: 0,
-    right: 0,
+    right: 0,    
     margin: theme.spacing(1),
+    // eslint-disable-next-line
     margin: "30px 30px 5px",
     color: "white",
     backgroundColor: "black",
@@ -29,10 +30,6 @@ function ProfileButton({ handleLoggedIn, history }) {
 
   const classes = useStyles();
 
-  function handleClick() {
-    setMenu(!menu)
-  }
-
   function goto(link) {
     history.push(link)
   }
@@ -47,7 +44,7 @@ function ProfileButton({ handleLoggedIn, history }) {
   return (
     <div className="dropdown">
       <Button
-        onClick={handleClick}
+        onMouseOver={()=>setMenu(!menu)}
         variant="contained"
         className={classes.button}
         startIcon={<AccountCircleIcon />}

@@ -1,6 +1,7 @@
 .cover-song{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .song {
@@ -73,3 +74,4 @@
 .dropDownContent > p:hover {
   background-color: #282828;
 }
+

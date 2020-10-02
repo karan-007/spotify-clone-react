@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import "../style/Footer.css";
-
+import fetchApi from '../fetchApi'
+import {postApiWithAuth} from '../postApi'
 import { play, pause } from "../store/index";
+import axios from '../apiConfig/API'
 
 function Footer() {
   const [like, setLike] = useState(false);
+  // eslint-disable-next-line
+  const [data,setUserData]=useState('')
+
+  useEffect(() => {
+    fetchApi('/user/profile')
+      .then((data) => {
+        setUserData(data);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
+
 
   const dispatch = useDispatch();
 
@@ -23,7 +38,17 @@ function Footer() {
 
   function handleClick() {
     setLike(!like);
+    if(like){
+      axios.delete(`/liked/${item.song_id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+    }else{
+      postApiWithAuth('/liked/add',{songId:item.song_id}).then(alert("liked")).catch(err=>console.log(err))
+    }
   }
+
 
   const playSong = () => {
     if (!playing) {

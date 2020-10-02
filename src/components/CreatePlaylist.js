@@ -1,65 +1,72 @@
-import React ,{useState} from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
+import { Modal, Button } from "react-bootstrap";
+import { postApiWithAuth } from "../postApi";
 import "../style/createPlaylist.css";
-import Playlist from './PlayList'
-import { FullscreenExit } from "@material-ui/icons";
-import { postApiWithAuth } from '../postApi'
 
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-    display: 'flex',
-    flexDirection: 'row'
-  },
-}));
-
-
-function CreatePlaylist() {
-
-  const [playlistName, setPlaylistName] = useState('')
-
-  const handleChange = (e) => {
-    setPlaylistName(e.target.value)
+class CreatePlayList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playlistName: "",
+    };
   }
 
-  const handleClick = async () => {
+  handleChange = (e) => {
+    this.setState({
+      playlistName: e.target.value,
+    });
+  };
 
-    try {
-      let data = await postApiWithAuth('/playlists/add',{playlistName});
-      console.log(data);
-      alert(data.msg);
-      setPlaylistName('');
+  handleSubmit = () => {
+    if (this.state.playlistName !== "") {
+      postApiWithAuth("/playlists/add", {
+        playlistName: this.state.playlistName,
+      })
+        .then((data) => alert(data.msg))
+        .then(() => { 
+          this.props.onHide();
+          this.setState({playlistName:''})
+        });
+    } else {
+      alert(`Playlist name can't be empty`);
     }
+  };
 
-    catch(err){
-      console.log(err);
-      throw err;
-    }
-
+  render() {
+    return (
+      <Modal
+        {...this.props}
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <div className="create">
+          <h3>
+            <b>Create playlist</b>
+          </h3>
+          <input
+            className="textField"
+            type="text"
+            onChange={this.handleChange}
+            value={this.state.playlistName}
+            required
+          />
+          <div>
+            <Button
+              className="btn btn1 btn-success"
+              type="submit"
+              onClick={this.handleSubmit}
+            >
+              Add
+            </Button>
+            <Button className="btn btn1 btn-success" onClick={this.props.onHide}>
+              Close
+            </Button>
+          </div>
+        </div>
+      </Modal>
+    );
   }
-
-
-
-  const classes = useStyles();
-  return (
-    <div className="body">
-      <div className="create">
-        <h1>Create new playlist</h1>
-
-        <form className={classes.root} noValidate autoComplete="off">
-          {/* <TextField className="textField" id="standard-basic" size="normal" /> */}
-
-          <input className="textField" type="text" value={playlistName} onChange={handleChange} />
-          <h4 onClick={handleClick} className="create-btn">Create</h4>
-        </form>
-      </div>
-      <h4 style={{ marginTop: '30px 0' }}>Playlists</h4>
-      {/* <Playlist/> */}
-    </div>
-  );
 }
 
-export default CreatePlaylist;
+export default CreatePlayList;

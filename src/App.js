@@ -14,7 +14,6 @@ import AlbumAndTrack from './components/AlbumAndTrack';
 import { Provider } from 'react-redux'
 import Login from './components/Login'
 import store from './store/store'
-import CreatePlaylist from './components/CreatePlaylist';
 import SignUp from './components/SignUp';
 
 function App() {
@@ -49,9 +48,10 @@ function App() {
             <SideNav />
             <Switch>
               <Route path='/' exact component={Home} />
-              <Route path="/profile" component={Profile} />
+              <Route path="/profile">
+              <Profile handleLoggedIn={handleLoggedIn}/>
+              </Route>
               <Route path="/search" component={Search} />
-              <Route path="/createPlaylist" exact component={CreatePlaylist} />
               <Route path="/library" exact component={Library} />
               <Route path="/playlist/:id" component={PlayList} />
               <Route path="/track/:id" component={AlbumAndTrack} />
