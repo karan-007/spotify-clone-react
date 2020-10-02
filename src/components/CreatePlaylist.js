@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal,Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { postApiWithAuth } from "../postApi";
 import "../style/createPlaylist.css";
 
@@ -23,7 +23,10 @@ class CreatePlayList extends React.Component {
         playlistName: this.state.playlistName,
       })
         .then((data) => alert(data.msg))
-        .then(() => this.props.onHide());
+        .then(() => { 
+          this.props.onHide();
+          this.setState({playlistName:''})
+        });
     } else {
       alert(`Playlist name can't be empty`);
     }
