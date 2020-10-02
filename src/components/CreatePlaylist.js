@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal } from "react-bootstrap";
+import { Modal,Button } from "react-bootstrap";
 import { postApiWithAuth } from "../postApi";
 import "../style/createPlaylist.css";
 
@@ -49,16 +49,16 @@ class CreatePlayList extends React.Component {
             required
           />
           <div>
-            <button
-              className="create-btn1"
+            <Button
+              className="btn btn1 btn-success"
               type="submit"
               onClick={this.handleSubmit}
             >
               Add
-            </button>
-            <button className="create-btn1" onClick={this.props.onHide}>
+            </Button>
+            <Button className="btn btn1 btn-success" onClick={this.props.onHide}>
               Close
-            </button>
+            </Button>
           </div>
         </div>
       </Modal>

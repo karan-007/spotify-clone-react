@@ -16,10 +16,8 @@
 .pro-pic {
   width: 25%;
   height: 75%;
-  float: left;
   border-radius: 50%;
-  padding-top: 20px;
-  padding-left: 20px;
+  margin-bottom: 2%;
 }
 
 .cam {
