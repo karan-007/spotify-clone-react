@@ -90,7 +90,7 @@ function Profile({ history, handleLoggedIn }) {
           className="text-light"
           onChange={handleChange}
         />
-        <Button type="submit" variant="outline-primary" size="sm">
+        <Button type="submit" className="btn btn-secondary">
           Upload image
         </Button>
       </form>
@@ -105,7 +105,7 @@ function Profile({ history, handleLoggedIn }) {
       <span>Name:</span> <p>{userData[0].name}</p>
       <span>Username:</span> <p>{userData[0].username}</p>
       <span>E-mail:</span> <p>{userData[0].email}</p>
-      <button onClick={handleDelete}>delete</button>
+      <Button className="btn btn-danger"onClick={handleDelete}>Delete user</Button>
     </div>
   ) : null;
 
