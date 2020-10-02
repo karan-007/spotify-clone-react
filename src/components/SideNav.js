@@ -71,7 +71,7 @@ function SideNav() {
       <br />
       <strong className="sideNav-title">PLAYLISTS</strong>
 
-      <Link  to="" className="link-style" onClick={() => setModalShow(true)}>
+      <Link className="link-style" onClick={() => setModalShow(true)}>
         <NavOption Icon={AddBoxIcon} title="Create Playlist" />
       </Link>
 

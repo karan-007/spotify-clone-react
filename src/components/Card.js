@@ -3,6 +3,7 @@ import '../style/Card.css'
 import PlayCircleFilledRoundedIcon from '@material-ui/icons/PlayCircleFilledRounded';
 
 function Card({ name, data, img, icon, artist, onClick }) {
+    // {Icon ? <h4>{title}</h4> : <p>{title}</p>}
     return (
         <div className="card-alpha">
             <div className="card-data">
