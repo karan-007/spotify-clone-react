@@ -20,8 +20,8 @@ function PlayList({ match }) {
   const dispatch = useDispatch();
 
   let type = match.path.split("/")[1];
-  let playListData = "loading";
-  let songs = "loading";
+  let playListData = "Loading...";
+  let songs = "Loading...";
   const mounted = useRef();
   let id = match.params.id;
   useEffect(() => {
@@ -36,11 +36,6 @@ function PlayList({ match }) {
   // console.log(type)
 
   async function fetchData(id, type) {
-    if (type === "track") {
-      // let data = await fetchApi(`https://api.spotify.com/v1/tracks/${id}`)
-      // setplaylist(data)
-      setToggle(true);
-    }
     if (type === "artist") {
       // let data = await axios.get(`/artists/${id}`)
       let data = await fetchApi(`/artists/${id}`);
