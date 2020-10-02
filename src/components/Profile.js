@@ -71,8 +71,8 @@ function Profile({ history, handleLoggedIn }) {
   }
 
   const imagedata =
-    fetchedData && userData && userData[0].img_url !== "" ? (
-      <img className="pro-pic" src={userData[0].img_url} alt="user image" />
+    fetchedData && userData && userData[0].img_url !== null ? (
+      <img className="pro-pic" src={userData[0].img_url} alt="user profile" />
     ) : (
       <AccountCircleIcon style={style} />
     );

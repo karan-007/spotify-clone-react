@@ -7,10 +7,8 @@ import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Song from "./Song";
-import axios from "../apiConfig/API";
 
 function PlayList({ match }) {
-  const [playlist, setplaylist] = useState([]);
   const [list, setList] = useState({});
   const [toggle, setToggle] = useState(false);
 
@@ -97,7 +95,7 @@ function PlayList({ match }) {
      else {
       playListData = (
         <div className="body-info">
-          <img src={match.params.img} alt="" />
+          <img src={list[0].img_url} alt="" />
           <div className="body-infoText">
             <strong>Album</strong>
             <h2>{list.name}</h2>

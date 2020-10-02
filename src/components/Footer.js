@@ -11,16 +11,8 @@ import axios from '../apiConfig/API'
 
 function Footer() {
   const [like, setLike] = useState(false);
+  // eslint-disable-next-line
   const [data,setUserData]=useState('')
-
-  // fetchApi('/user/profile')
-  //   .then((data) => {
-  //     setUserData(data);
-  //     console.log(data)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
 
   useEffect(() => {
     fetchApi('/user/profile')

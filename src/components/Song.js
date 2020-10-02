@@ -16,6 +16,7 @@ function Song({ img, name, artists, album, duration, data, play, isReload }) {
   const [playlist1, setPlaylist1] = useState("");
   const [playlist2, setPlaylist2] = useState("");
   const [toggle, setToggle] = useState(false);
+  // eslint-disable-next-line
   const [error, setError] = useState("");
 
 
@@ -33,12 +34,11 @@ function Song({ img, name, artists, album, duration, data, play, isReload }) {
 
   async function addToPlaylist(pid, sid) {
 
-    try{
-      await  postApiWithAuth("playlists/add/song", { playlistId: pid, songId: sid })
-      alert("added")  
-
+    try {
+      await postApiWithAuth("playlists/add/song", { playlistId: pid, songId: sid })
+      alert("added")
     }
-    catch(err){
+    catch (err) {
       console.error(err)
     }
   }
@@ -94,6 +94,7 @@ function Song({ img, name, artists, album, duration, data, play, isReload }) {
 
   return (
     <div className="cover-song">
+
       <div className="song">
         <PlayArrowRoundedIcon
           onClick={() => play(data)}
@@ -101,25 +102,35 @@ function Song({ img, name, artists, album, duration, data, play, isReload }) {
           fontSize="large"
         />
         <img className="song-img" src={img} alt="" />
+
         <div className="song-info">
           <h4>{name}</h4>
           <span>{artists}</span>
         </div>
+
         <p className="song-album">{album}</p>
         <p className="song-duration">{(duration / 60).toFixed(2)} m</p>
+
         <MoreHorizIcon onClick={handleClick} />
+
       </div>
       <div style={{ display: drop ? "block" : "none" }}>
+
         <div className="dropDownContent">
           <p onClick={handleClick1}>Add to playlist</p>
+
           <div style={{ display: drop1 ? "block" : "none" }}>
             {playListData1}
           </div>
+
           <p onClick={handleClick2}>Remove from playlist</p>
+
           <div style={{ display: drop2 ? "block" : "none" }}>
             {playListData2}
           </div>
+
         </div>
+        
       </div>
     </div>
   );

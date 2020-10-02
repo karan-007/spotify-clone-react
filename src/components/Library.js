@@ -8,7 +8,8 @@ import axios from '../apiConfig/API'
 
 function Library({ history }) {
     const [playlist, setPlaylist] = useState();
-    const [data, setUserData] = useState('')
+    // eslint-disable-next-line
+    const [data, setUserData] = useState('');
     const [toggle, setToggle] = useState(false);
 
     useEffect(() => {

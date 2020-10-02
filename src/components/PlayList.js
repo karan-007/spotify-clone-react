@@ -7,9 +7,8 @@ import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Song from "./Song";
 
-function PlayList({ match, name }) {
-  const [playlist, setplaylist] = useState([]);
-  const [list, setList] = useState({});
+function PlayList({ match }) {
+  const [playlist, setPlaylist] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [like, setLike] = useState(false);
   const [shouldReload, setShouldReload] = useState(false)
@@ -27,6 +26,7 @@ function PlayList({ match, name }) {
   let songs = "Loading...";
   const mounted = useRef();
   let id = match.params.id;
+
   useEffect(() => {
     if (!mounted.current) {
       fetchData(id);
@@ -36,15 +36,15 @@ function PlayList({ match, name }) {
     }
   }, [id, shouldReload]);
 
-  //console.log(id)
 
   async function fetchData(id) {
-    if (id == "likedSongs") {
-      var data = await fetchApi(`/liked`);
+    let data;
+    if (id === "likedSongs") {
+      data = await fetchApi(`/liked`);
     } else {
-      var data = await fetchApi(`/playlists/${id}`);
+      data = await fetchApi(`/playlists/${id}`);
     }
-    setplaylist(data);
+    setPlaylist(data);
     setToggle(true);
   }
 
@@ -78,7 +78,7 @@ function PlayList({ match, name }) {
       <div className="body-info">
         <img src={playlist.img_url} alt="" />
         <div className="body-infoText">
-          <strong>{match.params.name}</strong>
+          <strong>playlist</strong>
         </div>
       </div>
     );

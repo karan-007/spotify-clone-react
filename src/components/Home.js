@@ -5,18 +5,13 @@ import Card from "./Card";
 import { withRouter } from "react-router-dom";
 
 function Home({ history }) {
+  // eslint-disable-next-line
   const [recentList, setRecent] = useState([]);
   const [topTrack, setTrack] = useState([]);
   const [topArtist, setArtist] = useState([]);
   const [done, setDone] = useState(false);
 
   let showData = "loading";
-
-  useEffect(() => {
-    Promise.all([ fetchTrack(), fetchArtist(),fetchRecent()]).then((res) => {
-      setDone(true);
-    });
-  }, []);
 
   const fetchTrack = () => {
     fetchApi("/albums").then((res) => setTrack(res));
@@ -30,6 +25,12 @@ function Home({ history }) {
   const fetchRecent = () => {
     fetchApi("/playlists").then((res) => setRecent(res));
   };
+
+  useEffect(() => {
+    Promise.all([fetchTrack(), fetchArtist(), fetchRecent()]).then((res) => {
+      setDone(true);
+    });
+  }, []);
 
   function goto(link) {
     history.push(link);
@@ -61,7 +62,11 @@ function Home({ history }) {
     );
   }
 
-  return <div className="body">{showData}</div>;
+  return (
+    <div className="body">
+      {showData}
+    </div>
+  );
 }
 
 export default withRouter(Home);
