@@ -40,10 +40,6 @@ function ProfileButton({ handleLoggedIn, history }) {
     handleLoggedIn();
   }
 
-  const profile = () => {
-    goto('/profile')
-  }
-
   return (
     <div className="dropdown">
       <Button
@@ -56,8 +52,8 @@ function ProfileButton({ handleLoggedIn, history }) {
       </Button>
       <div style={{ display: menu ? "block" : "none" }}>
         <div id="myDropdown" className="dropdown-content">
-          <p onClick={profile}>Profile</p>
-          <p onClick={logout}>Logout</p>
+          <Link to="/profile">Profile</Link>
+          <Link onClick={logout}>Logout</Link>
         </div>
       </div>
     </div>

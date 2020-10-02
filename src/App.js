@@ -49,7 +49,7 @@ function App() {
             <Switch>
               <Route path='/' exact component={Home} />
               <Route path="/profile">
-                <Profile handleLoggedIn={handleLoggedIn}/>
+              <Profile handleLoggedIn={handleLoggedIn}/>
               </Route>
               <Route path="/search" component={Search} />
               <Route path="/library" exact component={Library} />
