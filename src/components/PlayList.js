@@ -78,7 +78,7 @@ function PlayList({ match }) {
       <div className="body-info">
         <img src={playlist.img_url} alt="" />
         <div className="body-infoText">
-          <strong>playlist</strong>
+          <strong>{id !== 'likedSongs' ? 'playlist' : 'Liked Songs'}</strong>
         </div>
       </div>
     );
