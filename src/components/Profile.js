@@ -17,7 +17,6 @@ function Profile({ history, handleLoggedIn }) {
   const [imageData, setImageData] = useState();
   const [userData, setUserData] = useState("");
   const [fetchedData, setFetchedData] = useState(false);
-  const [imageUpload, setImageUpload] = useState(false);
 
   const handleChange = (e) => {
     setImageData(e.target.files[0]);
@@ -41,8 +40,8 @@ function Profile({ history, handleLoggedIn }) {
     if (imageData) {
       postApiWithAuth("/userimage/upload", data)
         .then((res) => {
-          window.alert(res, "profile pic added successfully");
-          setImageUpload(true);
+          window.alert("profile pic added successfully");
+          window.location.reload();
         })
         .catch((err) => console.log(err));
     }
@@ -110,7 +109,7 @@ function Profile({ history, handleLoggedIn }) {
   ) : null;
 
   return (
-    <div className="body">
+    <div className="body">      
       {renderCover}
       {renderUserData}
     </div>

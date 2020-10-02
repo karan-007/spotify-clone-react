@@ -7,11 +7,12 @@ import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Song from "./Song";
 
-function PlayList({ match }) {
+function PlayList({ match, name }) {
   const [playlist, setplaylist] = useState([]);
   const [list, setList] = useState({});
   const [toggle, setToggle] = useState(false);
   const [like, setLike] = useState(false);
+  const [shouldReload, setShouldReload] = useState(false)
 
   function handleClick() {
     setLike(!like);
@@ -33,7 +34,7 @@ function PlayList({ match }) {
     } else {
       fetchData(id);
     }
-  }, [id]);
+  }, [id, shouldReload]);
 
   //console.log(id)
 
@@ -43,10 +44,12 @@ function PlayList({ match }) {
     } else {
       var data = await fetchApi(`/playlists/${id}`);
     }
-    // console.log(data)
     setplaylist(data);
-    // setList(data)
     setToggle(true);
+  }
+
+  const isReload = () => {
+    setShouldReload(true)
   }
 
   const playSong = (data) => {
@@ -75,8 +78,7 @@ function PlayList({ match }) {
       <div className="body-info">
         <img src={playlist.img_url} alt="" />
         <div className="body-infoText">
-          <strong>Playlist</strong>
-          <h2></h2>
+          <strong>{match.params.name}</strong>
         </div>
       </div>
     );
@@ -89,6 +91,7 @@ function PlayList({ match }) {
           artists={song.artist_name}
           // album={song.track.album.name}
           duration={song.duration}
+          isReload={isReload}
           data={song}
           play={playSong}
         />

@@ -9,7 +9,7 @@ import axios from '../apiConfig/API'
 
 import "../style/Song.css";
 
-function Song({ img, name, artists, album, duration, data, play }) {
+function Song({ img, name, artists, album, duration, data, play, isReload }) {
   const [drop, setDrop] = useState(false);
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
@@ -18,24 +18,29 @@ function Song({ img, name, artists, album, duration, data, play }) {
   const [toggle, setToggle] = useState(false);
   const [error, setError] = useState("");
 
+
   useEffect(() => {
     fetchApi("/playlists")
       .then((data) => {
         setPlaylist1(data);
         setPlaylist2(data);
-        //    console.log(data);
         setToggle(true);
       })
       .catch((err) => {
-        //  console.log(err);
         setError(err);
       });
   }, []);
 
-  function addToPlaylist(pid, sid) {
-    postApiWithAuth("playlists/add/song", { playlistId: pid, songId: sid })
-      .then(alert("added"))
-      .catch((err) => console.log(err));
+  async function addToPlaylist(pid, sid) {
+
+    try{
+      await  postApiWithAuth("playlists/add/song", { playlistId: pid, songId: sid })
+      alert("added")  
+
+    }
+    catch(err){
+      console.error(err)
+    }
   }
 
   function removeFromPlaylist(pid, sid) {
@@ -46,6 +51,7 @@ function Song({ img, name, artists, album, duration, data, play }) {
         },
       })
       .then(alert("removed"))
+      .then(() => isReload())
       .catch((err) => console.log(err));
   }
 

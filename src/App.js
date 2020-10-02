@@ -53,7 +53,7 @@ function App() {
               </Route>
               <Route path="/search" component={Search} />
               <Route path="/library" exact component={Library} />
-              <Route path="/playlist/:id" component={PlayList} />
+              <Route path="/playlist/:id/:name" component={PlayList} />
               <Route path="/track/:id" component={AlbumAndTrack} />
               <Route path="/artist/:id" component={AlbumAndTrack} />
               <Route path="/album/:id" component={AlbumAndTrack} />
